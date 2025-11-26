@@ -104,19 +104,19 @@ onUnmounted(() => {
           'group relative flex items-center justify-center gap-1 px-4 py-2 rounded-full transition-all duration-300 sm:gap-2 sm:px-5 sm:py-2.5',
           activeSection === item.href.replace('#', '')
             ? 'text-white'
-            : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50',
+            : 'text-gray-600 hover:text-yellow-600 hover:bg-yellow-50',
         ]"
       >
         <!-- Active background -->
         <span
           v-if="activeSection === item.href.replace('#', '')"
-          class="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-purple-400 shadow-lg -z-10 animate-fade-in"
+          class="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-400 shadow-lg -z-10 animate-fade-in"
         ></span>
 
         <!-- Hover indicator -->
         <span
           v-else
-          class="absolute inset-0 rounded-full bg-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+          class="absolute inset-0 rounded-full bg-yellow-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
         ></span>
 
         <!-- Text -->

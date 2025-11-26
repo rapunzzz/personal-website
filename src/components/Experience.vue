@@ -47,15 +47,15 @@ const education = [
 <template>
   <section
     id="experience"
-    class="relative min-h-screen bg-gradient-to-br from-gray-50 via-purple-50/30 to-white py-20"
+    class="relative min-h-screen bg-gradient-to-br from-gray-50 via-yellow-50/30 to-white py-20"
   >
     <!-- Background decoration -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <div
-        class="absolute top-20 -left-20 w-96 h-96 bg-purple-300 rounded-full opacity-10 blur-3xl animate-pulse"
+        class="absolute top-20 -left-20 w-96 h-96 bg-yellow-300 rounded-full opacity-10 blur-3xl animate-pulse"
       ></div>
       <div
-        class="absolute bottom-20 -right-20 w-96 h-96 bg-purple-400 rounded-full opacity-10 blur-3xl animate-pulse"
+        class="absolute bottom-20 -right-20 w-96 h-96 bg-yellow-400 rounded-full opacity-10 blur-3xl animate-pulse"
         style="animation-delay: 1s"
       ></div>
     </div>
@@ -71,7 +71,7 @@ const education = [
           class="mb-4 text-4xl font-extrabold text-gray-900 sm:text-5xl"
         >
           Experience &
-          <span class="bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent"
+          <span class="bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent"
             >Education</span
           >
         </h2>
@@ -80,7 +80,7 @@ const education = [
           v-motion
           :initial="{ opacity: 0, scaleX: 0 }"
           :enter="{ opacity: 1, scaleX: 1, transition: { duration: 600, delay: 200 } }"
-          class="mx-auto h-1 w-24 bg-gradient-to-r from-purple-600 to-purple-400 rounded-full"
+          class="mx-auto h-1 w-24 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full"
         ></div>
       </div>
 
@@ -96,7 +96,7 @@ const education = [
               :visible-once="false"
               class="flex items-center gap-3 mb-8"
             >
-              <div class="p-3 bg-purple-600 rounded-xl shadow-lg">
+              <div class="p-3 bg-yellow-600 rounded-xl shadow-lg">
                 <Briefcase class="w-6 h-6 text-white" />
               </div>
               <h3 class="text-2xl font-bold text-gray-900">Work Experience</h3>
@@ -109,18 +109,18 @@ const education = [
               :initial="{ opacity: 0, x: -30 }"
               :enter="{ opacity: 1, x: 0, transition: { duration: 500, delay: 400 + index * 100 } }"
               :visible-once="false"
-              class="group relative overflow-hidden rounded-2xl bg-white border border-gray-100 p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-purple-200"
+              class="group relative overflow-hidden rounded-2xl bg-white border border-gray-100 p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-yellow-200"
             >
               <!-- Gradient overlay on hover -->
               <div
-                class="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-purple-100/0 group-hover:from-purple-50/50 group-hover:to-purple-100/30 transition-all duration-300 rounded-2xl"
+                class="absolute inset-0 bg-gradient-to-br from-yellow-50/0 to-yellow-100/0 group-hover:from-yellow-50/50 group-hover:to-yellow-100/30 transition-all duration-300 rounded-2xl"
               ></div>
 
               <div class="relative">
                 <!-- Type Badge -->
                 <div class="mb-4">
                   <span
-                    class="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold"
+                    class="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold"
                   >
                     {{ value.type }}
                   </span>
@@ -128,7 +128,7 @@ const education = [
 
                 <!-- Title -->
                 <h4
-                  class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors"
+                  class="text-xl font-bold text-gray-900 mb-3 group-hover:text-yellow-600 transition-colors"
                 >
                   {{ value.title }}
                 </h4>
@@ -136,11 +136,11 @@ const education = [
                 <!-- Company & Period -->
                 <div class="space-y-2 mb-4">
                   <p class="flex items-center gap-2 text-gray-700 font-medium">
-                    <Briefcase class="w-4 h-4 text-purple-600" />
+                    <Briefcase class="w-4 h-4 text-yellow-600" />
                     {{ value.company }}
                   </p>
                   <p class="flex items-center gap-2 text-gray-600 text-sm">
-                    <Calendar class="w-4 h-4 text-purple-600" />
+                    <Calendar class="w-4 h-4 text-yellow-600" />
                     {{ value.period }}
                   </p>
                 </div>
@@ -162,7 +162,7 @@ const education = [
               :visible-once="false"
               class="flex items-center gap-3 mb-8"
             >
-              <div class="p-3 bg-purple-600 rounded-xl shadow-lg">
+              <div class="p-3 bg-yellow-600 rounded-xl shadow-lg">
                 <GraduationCap class="w-6 h-6 text-white" />
               </div>
               <h3 class="text-2xl font-bold text-gray-900">Education</h3>
@@ -174,7 +174,7 @@ const education = [
               :initial="{ opacity: 0, scaleY: 0 }"
               :enter="{ opacity: 1, scaleY: 1, transition: { duration: 800, delay: 400 } }"
               :visible-once="false"
-              class="absolute left-6 top-24 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 via-purple-400 to-purple-200 origin-top"
+              class="absolute left-6 top-24 bottom-0 w-0.5 bg-gradient-to-b from-yellow-600 via-yellow-400 to-yellow-200 origin-top"
             ></div>
 
             <!-- Cards -->
@@ -189,24 +189,24 @@ const education = [
             >
               <!-- Timeline Dot -->
               <div
-                class="absolute left-0 top-2 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-purple-400 shadow-lg ring-4 ring-white ring-offset-2"
+                class="absolute left-0 top-2 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-yellow-600 to-yellow-400 shadow-lg ring-4 ring-white ring-offset-2"
               >
                 <GraduationCap :size="20" class="text-white" />
               </div>
 
               <!-- Card -->
               <div
-                class="group rounded-2xl bg-white border border-gray-100 p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:border-purple-200 overflow-hidden relative"
+                class="group rounded-2xl bg-white border border-gray-100 p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:border-yellow-200 overflow-hidden relative"
               >
                 <!-- Gradient overlay on hover -->
                 <div
-                  class="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-purple-100/0 group-hover:from-purple-50/50 group-hover:to-purple-100/30 transition-all duration-300"
+                  class="absolute inset-0 bg-gradient-to-br from-yellow-50/0 to-yellow-100/0 group-hover:from-yellow-50/50 group-hover:to-yellow-100/30 transition-all duration-300"
                 ></div>
 
                 <div class="relative">
                   <!-- Degree -->
                   <h4
-                    class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors"
+                    class="text-xl font-bold text-gray-900 mb-3 group-hover:text-yellow-600 transition-colors"
                   >
                     {{ value.degree }}
                   </h4>
@@ -217,11 +217,11 @@ const education = [
                       {{ value.institution }}
                     </p>
                     <p class="flex items-center gap-2 text-gray-600 text-sm">
-                      <MapPin class="w-4 h-4 text-purple-600" />
+                      <MapPin class="w-4 h-4 text-yellow-600" />
                       {{ value.location }}
                     </p>
                     <p class="flex items-center gap-2 text-gray-600 text-sm">
-                      <Calendar class="w-4 h-4 text-purple-600" />
+                      <Calendar class="w-4 h-4 text-yellow-600" />
                       {{ value.period }}
                     </p>
                   </div>

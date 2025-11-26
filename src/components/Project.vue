@@ -68,7 +68,7 @@ const toggleFunProjects = () => {
 <template>
   <section
     id="projects"
-    class="relative min-h-screen bg-gradient-to-b from-purple-50 to-white py-20"
+    class="relative min-h-screen bg-gradient-to-b from-yellow-50 to-white py-20"
   >
     <div class="container relative z-10 mx-auto px-4">
       <!-- Header -->
@@ -80,14 +80,14 @@ const toggleFunProjects = () => {
           :visible-once="false"
           class="mb-4 text-4xl font-extrabold text-gray-900 sm:text-5xl"
         >
-          My <span class="text-purple-600">Projects</span>
+          My <span class="text-yellow-600">Projects</span>
         </h2>
         <div
           v-motion
           :initial="{ opacity: 0, scaleX: 0 }"
           :enter="{ opacity: 1, scaleX: 1, transition: { duration: 600, delay: 200 } }"
           :visible-once="false"
-          class="mx-auto h-1 w-24 bg-gradient-to-r from-purple-600 to-purple-400 rounded-full"
+          class="mx-auto h-1 w-24 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full"
         ></div>
       </div>
 
@@ -109,14 +109,14 @@ const toggleFunProjects = () => {
           <!-- Featured Badge -->
           <div
             v-if="project.featured"
-            class="absolute top-4 right-4 z-20 rounded-full bg-gradient-to-r from-purple-600 to-purple-400 px-3 py-1 text-xs font-bold text-white shadow-lg"
+            class="absolute top-4 right-4 z-20 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-400 px-3 py-1 text-xs font-bold text-white shadow-lg"
           >
             ⭐ Featured
           </div>
 
           <!-- Image Container -->
           <div
-            class="relative aspect-video overflow-hidden bg-gradient-to-br from-purple-100 to-purple-50"
+            class="relative aspect-video overflow-hidden bg-gradient-to-br from-yellow-100 to-yellow-50"
           >
             <img
               :src="project.image"
@@ -135,7 +135,7 @@ const toggleFunProjects = () => {
                 :href="project.live"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-purple-600 shadow-lg transition-transform hover:scale-110"
+                class="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-yellow-600 shadow-lg transition-transform hover:scale-110"
               >
                 <ExternalLink :size="16" />
                 View Live
@@ -155,7 +155,7 @@ const toggleFunProjects = () => {
           <!-- Content -->
           <div class="p-6">
             <h3
-              class="mb-3 text-2xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors"
+              class="mb-3 text-2xl font-bold text-gray-900 group-hover:text-yellow-600 transition-colors"
             >
               {{ project.title }}
             </h3>
@@ -168,7 +168,7 @@ const toggleFunProjects = () => {
               <span
                 v-for="tech in project.tech"
                 :key="tech"
-                class="rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-700 transition-colors hover:bg-purple-200"
+                class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700 transition-colors hover:bg-yellow-200"
               >
                 {{ tech }}
               </span>
@@ -177,7 +177,7 @@ const toggleFunProjects = () => {
 
           <!-- Decorative gradient border on hover -->
           <div
-            class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-purple-400 transition-colors pointer-events-none"
+            class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-yellow-400 transition-colors pointer-events-none"
           ></div>
         </div>
       </div>
@@ -192,7 +192,7 @@ const toggleFunProjects = () => {
       >
         <button
           @click="toggleFunProjects"
-          class="inline-flex items-center gap-2 rounded-full border-2 border-purple-600 bg-gradient-to-r from-purple-600 to-purple-500 px-8 py-3 text-base font-semibold text-white transition-all hover:scale-105 hover:shadow-lg"
+          class="inline-flex items-center gap-2 rounded-full border-2 border-yellow-600 bg-gradient-to-r from-yellow-600 to-yellow-500 px-8 py-3 text-base font-semibold text-white transition-all hover:scale-105 hover:shadow-lg"
         >
           <span v-if="!showFunProjects">Want to see my fun projects?</span>
           <span v-else>Hide Fun Projects</span>
@@ -214,12 +214,12 @@ const toggleFunProjects = () => {
             <div class="mb-8 text-center relative">
               <div class="inline-block relative">
                 <h3
-                  class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 bg-clip-text text-transparent mb-3 animate-gradient"
+                  class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-600 via-pink-500 to-yellow-600 bg-clip-text text-transparent mb-3 animate-gradient"
                 >
                   {{ funProjects[currentProjectIndex]?.title }}
                 </h3>
                 <div
-                  class="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 rounded-full animate-gradient"
+                  class="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 via-pink-500 to-yellow-600 rounded-full animate-gradient"
                 ></div>
               </div>
               <p class="text-gray-600 mt-4 text-lg">
@@ -229,7 +229,7 @@ const toggleFunProjects = () => {
                 :href="funProjects[currentProjectIndex]?.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 mt-4 px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+                class="inline-flex items-center gap-2 mt-4 px-5 py-2 rounded-full bg-gradient-to-r from-yellow-600 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
               >
                 <ExternalLink :size="18" />
                 Open in new tab
@@ -238,7 +238,7 @@ const toggleFunProjects = () => {
 
             <!-- Carousel Container - Optimized Size -->
             <div
-              class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-purple-100 to-pink-100 p-2 md:p-4"
+              class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-yellow-100 to-pink-100 p-2 md:p-4"
             >
               <!-- Navigation Buttons -->
               <button
@@ -246,7 +246,7 @@ const toggleFunProjects = () => {
                 class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/95 p-2 md:p-3 shadow-xl transition-all hover:bg-white hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 :disabled="funProjects.length <= 1"
               >
-                <ChevronLeft :size="20" class="text-purple-600 md:w-6 md:h-6" />
+                <ChevronLeft :size="20" class="text-yellow-600 md:w-6 md:h-6" />
               </button>
 
               <button
@@ -254,7 +254,7 @@ const toggleFunProjects = () => {
                 class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/95 p-2 md:p-3 shadow-xl transition-all hover:bg-white hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 :disabled="funProjects.length <= 1"
               >
-                <ChevronRight :size="20" class="text-purple-600 md:w-6 md:h-6" />
+                <ChevronRight :size="20" class="text-yellow-600 md:w-6 md:h-6" />
               </button>
 
               <!-- iframe Viewer - Better responsive sizing -->
@@ -280,7 +280,7 @@ const toggleFunProjects = () => {
                   :class="[
                     'h-2.5 rounded-full transition-all duration-300',
                     currentProjectIndex === index
-                      ? 'w-10 bg-gradient-to-r from-purple-600 to-pink-500 shadow-md'
+                      ? 'w-10 bg-gradient-to-r from-yellow-600 to-pink-500 shadow-md'
                       : 'w-2.5 bg-gray-300 hover:bg-gray-400',
                   ]"
                   :title="project.title"
@@ -294,7 +294,7 @@ const toggleFunProjects = () => {
                 class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-md text-sm font-semibold text-gray-700"
               >
                 <span
-                  class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 animate-pulse"
+                  class="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-600 to-pink-500 animate-pulse"
                 ></span>
                 {{ currentProjectIndex + 1 }} / {{ funProjects.length }}
               </span>

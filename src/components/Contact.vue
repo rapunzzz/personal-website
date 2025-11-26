@@ -39,8 +39,8 @@ const contactInfo = [
     label: 'Email',
     value: 'kurniathaariq55@gmail.com',
     href: 'mailto:kurniathaariq55@gmail.com',
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-100',
+    color: 'text-yellow-600',
+    bgColor: 'bg-yellow-100',
   },
   {
     icon: Phone,
@@ -55,8 +55,8 @@ const contactInfo = [
     label: 'Location',
     value: 'Depok, Indonesia',
     href: '#',
-    color: 'text-purple-600',
-    bgColor: 'bg-purple-100',
+    color: 'text-yellow-600',
+    bgColor: 'bg-yellow-100',
   },
 ]
 </script>
@@ -64,15 +64,15 @@ const contactInfo = [
 <template>
   <section
     id="contact"
-    class="relative min-h-screen bg-gradient-to-b from-white to-purple-50 py-20"
+    class="relative min-h-screen bg-gradient-to-b from-white to-yellow-50 py-20"
   >
     <!-- Background Decoration -->
     <div class="absolute inset-0 overflow-hidden">
       <div
-        class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-purple-200 opacity-20 blur-3xl"
+        class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-yellow-200 opacity-20 blur-3xl"
       ></div>
       <div
-        class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-purple-300 opacity-20 blur-3xl"
+        class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-yellow-300 opacity-20 blur-3xl"
       ></div>
     </div>
 
@@ -86,14 +86,14 @@ const contactInfo = [
           :visible-once="false"
           class="mb-4 text-4xl font-extrabold text-gray-900 sm:text-5xl"
         >
-          Let's <span class="text-purple-600">Connect</span>
+          Let's <span class="text-yellow-600">Connect</span>
         </h2>
         <div
           v-motion
           :initial="{ opacity: 0, scaleX: 0 }"
           :enter="{ opacity: 1, scaleX: 1, transition: { duration: 600, delay: 200 } }"
           :visible-once="false"
-          class="mx-auto h-1 w-24 bg-gradient-to-r from-purple-600 to-purple-400 rounded-full"
+          class="mx-auto h-1 w-24 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full"
         ></div>
       </div>
 
@@ -161,7 +161,7 @@ const contactInfo = [
               },
             }"
             :visible-once="false"
-            class="rounded-2xl bg-gradient-to-br from-purple-600 to-purple-400 p-6 text-white shadow-lg"
+            class="rounded-2xl bg-gradient-to-br from-yellow-600 to-yellow-400 p-6 text-white shadow-lg"
           >
             <h3 class="mb-3 text-xl font-bold">Quick Response</h3>
             <p class="text-sm leading-relaxed opacity-90">
@@ -202,7 +202,7 @@ const contactInfo = [
                   type="text"
                   required
                   placeholder="King Rapunzz"
-                  class="w-full rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-purple-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-200"
+                  class="w-full rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-yellow-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-200"
                 />
               </div>
 
@@ -217,7 +217,7 @@ const contactInfo = [
                   type="email"
                   required
                   placeholder="rapunzz@example.com"
-                  class="w-full rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-purple-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-200"
+                  class="w-full rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-yellow-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-200"
                 />
               </div>
 
@@ -232,7 +232,7 @@ const contactInfo = [
                   rows="5"
                   required
                   placeholder="Tell me about your project or just say hi!"
-                  class="w-full resize-none rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-purple-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-200"
+                  class="w-full resize-none rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-yellow-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-200"
                 ></textarea>
               </div>
 
@@ -240,7 +240,7 @@ const contactInfo = [
               <button
                 type="submit"
                 :disabled="isSubmitting || submitSuccess"
-                class="group relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-purple-600 to-purple-400 px-6 py-4 text-base font-semibold text-white shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+                class="group relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-yellow-600 to-yellow-400 px-6 py-4 text-base font-semibold text-white shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <span
                   v-if="!isSubmitting && !submitSuccess"

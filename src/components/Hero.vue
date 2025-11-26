@@ -19,7 +19,7 @@ const handleClick = (e: MouseEvent, href: string) => {
 <template>
   <section id="home" class="relative min-h-screen overflow-hidden">
     <!-- Animated gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-purple-100">
+    <div class="absolute inset-0 bg-gradient-to-br from-yellow-50 via-white to-yellow-100">
       <div
         class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.1),transparent_50%)]"
       ></div>
@@ -30,13 +30,13 @@ const handleClick = (e: MouseEvent, href: string) => {
 
     <!-- Floating decorative elements -->
     <div
-      class="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"
+      class="absolute top-20 left-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"
     ></div>
     <div
-      class="absolute top-40 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"
+      class="absolute top-40 right-10 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"
     ></div>
     <div
-      class="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"
+      class="absolute bottom-20 left-1/2 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"
     ></div>
 
     <div class="relative z-10 flex min-h-screen items-center justify-center px-4 py-20">
@@ -78,7 +78,7 @@ const handleClick = (e: MouseEvent, href: string) => {
             :class="[
               'inline-block',
               letter === ' ' ? 'w-4' : '',
-              index < 7 || index >= 14 ? 'text-purple-600' : 'text-gray-800',
+              index < 7 || index >= 14 ? 'text-yellow-600' : 'text-gray-800',
             ]"
           >
             {{ letter === ' ' ? '\u00A0' : letter }}
@@ -98,7 +98,7 @@ const handleClick = (e: MouseEvent, href: string) => {
           class="mb-8"
         >
           <p
-            class="inline-block text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent sm:text-3xl"
+            class="inline-block text-2xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent sm:text-3xl"
           >
             Full-Stack Developer
           </p>
@@ -134,7 +134,7 @@ const handleClick = (e: MouseEvent, href: string) => {
           <a
             href="#projects"
             @click="(e) => handleClick(e, '#projects')"
-            class="group inline-flex items-center gap-2 rounded-full bg-purple-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-purple-700 hover:shadow-xl hover:scale-105"
+            class="group inline-flex items-center gap-2 rounded-full bg-yellow-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-yellow-700 hover:shadow-xl hover:scale-105"
           >
             View My Work
             <ArrowDown :size="18" class="transition-transform group-hover:translate-y-1" />
@@ -142,7 +142,7 @@ const handleClick = (e: MouseEvent, href: string) => {
           <a
             href="#contact"
             @click="(e) => handleClick(e, '#contact')"
-            class="inline-flex items-center gap-2 rounded-full border-2 border-purple-600 bg-white px-8 py-4 text-base font-semibold text-purple-600 transition-all hover:bg-purple-50 hover:scale-105"
+            class="inline-flex items-center gap-2 rounded-full border-2 border-yellow-600 bg-white px-8 py-4 text-base font-semibold text-yellow-600 transition-all hover:bg-yellow-50 hover:scale-105"
           >
             Get In Touch
           </a>
@@ -165,7 +165,7 @@ const handleClick = (e: MouseEvent, href: string) => {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub Profile"
-            class="group inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white text-gray-700 transition-all hover:border-purple-600 hover:text-purple-600 hover:scale-110 hover:shadow-lg"
+            class="group inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white text-gray-700 transition-all hover:border-yellow-600 hover:text-yellow-600 hover:scale-110 hover:shadow-lg"
           >
             <Github :size="22" aria-hidden="true" />
           </a>
@@ -174,7 +174,7 @@ const handleClick = (e: MouseEvent, href: string) => {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn Profile"
-            class="group inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white text-gray-700 transition-all hover:border-purple-600 hover:text-purple-600 hover:scale-110 hover:shadow-lg"
+            class="group inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white text-gray-700 transition-all hover:border-yellow-600 hover:text-yellow-600 hover:scale-110 hover:shadow-lg"
           >
             <Linkedin :size="22" aria-hidden="true" />
           </a>

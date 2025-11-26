@@ -21,7 +21,7 @@ const secondHalf = computed(() => skills.slice(midpoint))
 </script>
 
 <template>
-  <section id="about" class="relative min-h-screen bg-gradient-to-b from-white to-purple-50 py-20">
+  <section id="about" class="relative min-h-screen bg-gradient-to-b from-white to-yellow-50 py-20">
     <div class="container relative z-10 mx-auto px-4">
       <!-- Header -->
       <div class="mb-16 text-center">
@@ -32,13 +32,13 @@ const secondHalf = computed(() => skills.slice(midpoint))
           :visible-once="false"
           class="mb-4 text-4xl font-extrabold text-gray-900 sm:text-5xl"
         >
-          About <span class="text-purple-600">Me</span>
+          About <span class="text-yellow-600">Me</span>
         </h2>
         <div
           v-motion
           :initial="{ opacity: 0, scaleX: 0 }"
           :enter="{ opacity: 1, scaleX: 1, transition: { duration: 600, delay: 200 } }"
-          class="mx-auto h-1 w-24 bg-gradient-to-r from-purple-600 to-purple-400 rounded-full"
+          class="mx-auto h-1 w-24 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full"
         ></div>
       </div>
 
@@ -55,7 +55,7 @@ const secondHalf = computed(() => skills.slice(midpoint))
             <div>
               <p class="mb-4 text-lg leading-relaxed text-gray-700">
                 I'm currently a
-                <span class="font-semibold text-purple-600"
+                <span class="font-semibold text-yellow-600"
                   >fourth-year Information Systems student</span
                 >
                 at the University of Indonesia, passionate about transforming innovative ideas into
@@ -63,7 +63,7 @@ const secondHalf = computed(() => skills.slice(midpoint))
               </p>
               <p class="text-lg leading-relaxed text-gray-700">
                 I’m especially interested in
-                <span class="font-semibold text-purple-600">Software Engineering</span>—from shaping
+                <span class="font-semibold text-yellow-600">Software Engineering</span>—from shaping
                 system architectures to building APIs and managing databases. I love creating
                 systems that are scalable, reliable, and truly useful. I’ve worked across various
                 stacks and enjoy learning new tools that help me write better, more efficient
@@ -83,7 +83,7 @@ const secondHalf = computed(() => skills.slice(midpoint))
           :visible-once="false"
           class="mb-4 text-center text-3xl font-bold text-gray-900"
         >
-          Technical <span class="text-purple-600">Skills</span>
+          Technical <span class="text-yellow-600">Skills</span>
         </h3>
 
         <p
@@ -104,7 +104,7 @@ const secondHalf = computed(() => skills.slice(midpoint))
               <div
                 v-for="(skill, index) in [...firstHalf, ...firstHalf]"
                 :key="`row1-${index}`"
-                class="group flex-shrink-0 w-72 rounded-xl bg-white p-6 shadow-sm border-2 border-transparent transition-all duration-300 hover:border-purple-400 hover:shadow-md"
+                class="group flex-shrink-0 w-72 rounded-xl bg-white p-6 shadow-sm border-2 border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md"
               >
                 <div class="flex items-center gap-4 mb-3">
                   <img :src="skill.icon" alt="" class="w-8 h-8" />
@@ -116,12 +116,12 @@ const secondHalf = computed(() => skills.slice(midpoint))
                       :class="[
                         'h-full rounded-full transition-all duration-500',
                         skill.level === 'Advanced'
-                          ? 'w-[90%] bg-gradient-to-r from-purple-600 to-purple-400'
-                          : 'w-[70%] bg-gradient-to-r from-purple-500 to-purple-300',
+                          ? 'w-[90%] bg-gradient-to-r from-yellow-600 to-yellow-400'
+                          : 'w-[70%] bg-gradient-to-r from-yellow-500 to-yellow-300',
                       ]"
                     ></div>
                   </div>
-                  <span class="text-sm font-semibold text-purple-600">{{ skill.level }}</span>
+                  <span class="text-sm font-semibold text-yellow-600">{{ skill.level }}</span>
                 </div>
               </div>
             </div>
@@ -134,7 +134,7 @@ const secondHalf = computed(() => skills.slice(midpoint))
               <div
                 v-for="(skill, index) in [...secondHalf, ...secondHalf]"
                 :key="`row2-${index}`"
-                class="group flex-shrink-0 w-72 rounded-xl bg-white p-6 shadow-sm border-2 border-transparent transition-all duration-300 hover:border-purple-400 hover:shadow-md"
+                class="group flex-shrink-0 w-72 rounded-xl bg-white p-6 shadow-sm border-2 border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md"
               >
                 <div class="flex items-center gap-4 mb-3">
                   <img :src="skill.icon" alt="" class="w-8 h-8" />
@@ -146,12 +146,12 @@ const secondHalf = computed(() => skills.slice(midpoint))
                       :class="[
                         'h-full rounded-full transition-all duration-500',
                         skill.level === 'Advanced'
-                          ? 'w-[90%] bg-gradient-to-r from-purple-600 to-purple-400'
-                          : 'w-[70%] bg-gradient-to-r from-purple-500 to-purple-300',
+                          ? 'w-[90%] bg-gradient-to-r from-yellow-600 to-yellow-400'
+                          : 'w-[70%] bg-gradient-to-r from-yellow-500 to-yellow-300',
                       ]"
                     ></div>
                   </div>
-                  <span class="text-sm font-semibold text-purple-600">{{ skill.level }}</span>
+                  <span class="text-sm font-semibold text-yellow-600">{{ skill.level }}</span>
                 </div>
               </div>
             </div>
