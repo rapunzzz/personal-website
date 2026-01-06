@@ -163,10 +163,10 @@ const contactInfo = [
             :visible-once="false"
             class="rounded-2xl bg-gradient-to-br from-yellow-600 to-yellow-400 p-6 text-white shadow-lg"
           >
-            <h3 class="mb-3 text-xl font-bold">Quick Response</h3>
+            <h3 class="mb-3 text-xl font-bold">Always Open for Opportunities</h3>
             <p class="text-sm leading-relaxed opacity-90">
-              I typically respond within 24 hours. For urgent inquiries, please mention it in your
-              message!
+              Whether it's a project, collaboration, or just saying hi. I respond within 24 hours!
+              Urgent matters? Mention it upfront!
             </p>
           </div>
         </div>

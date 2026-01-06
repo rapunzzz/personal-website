@@ -2,17 +2,20 @@
 import { computed } from 'vue'
 
 const skills = [
-  { name: 'React', level: 'Advanced', icon: '/icons/react.png' },
-  { name: 'HTML', level: 'Advanced', icon: '/icons/html.png' },
-  { name: 'CSS', level: 'Advanced', icon: '/icons/css.png' },
-  { name: 'Next.js', level: 'Intermediate', icon: '/icons/nextjs.png' },
-  { name: 'Express.js', level: 'Intermediate', icon: '/icons/express.png' },
-  { name: '.NET', level: 'Intermediate', icon: '/icons/net.png' },
-  { name: 'Django', level: 'Advanced', icon: '/icons/django.png' },
-  { name: 'Tailwind CSS', level: 'Advanced', icon: '/icons/tailwind.png' },
-  { name: 'Flutter', level: 'Intermediate', icon: '/icons/flutter.png' },
-  { name: 'PostgreSQL', level: 'Intermediate', icon: '/icons/postgresql.png' },
-  { name: 'SQLite', level: 'Intermediate', icon: '/icons/sqlite.png' },
+  { name: 'React', icon: '/icons/react.png' },
+  { name: 'HTML', icon: '/icons/html.png' },
+  { name: 'CSS', icon: '/icons/css.png' },
+  { name: 'Next.js', icon: '/icons/nextjs.png' },
+  { name: 'Vue .js', icon: '/icons/vuejs.png' },
+  { name: 'Fiber', icon: '/icons/fibergo.png' },
+  { name: 'Express.js', icon: '/icons/express.png' },
+  { name: '.NET', icon: '/icons/net.png' },
+  { name: 'Django', icon: '/icons/django.png' },
+  { name: 'Tailwind CSS', icon: '/icons/tailwind.png' },
+  { name: 'Flutter', icon: '/icons/flutter.png' },
+  { name: 'PostgreSQL', icon: '/icons/postgresql.png' },
+  { name: 'SQLite', icon: '/icons/sqlite.png' },
+  { name: 'SQL Server', icon: '/icons/sqlserver.png' },
 ]
 
 const midpoint = Math.ceil(skills.length / 2)
@@ -21,7 +24,7 @@ const secondHalf = computed(() => skills.slice(midpoint))
 </script>
 
 <template>
-  <section id="about" class="relative min-h-screen bg-gradient-to-b from-white to-yellow-50 py-20">
+  <section id="about" class="relative min-h-screen py-20">
     <div class="container relative z-10 mx-auto px-4">
       <!-- Header -->
       <div class="mb-16 text-center">
@@ -104,24 +107,11 @@ const secondHalf = computed(() => skills.slice(midpoint))
               <div
                 v-for="(skill, index) in [...firstHalf, ...firstHalf]"
                 :key="`row1-${index}`"
-                class="group flex-shrink-0 w-72 rounded-xl bg-white p-6 shadow-sm border-2 border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md"
+                class="group flex-shrink-0 rounded-xl bg-white p-6 shadow-sm border-2 border-dotted transition-all duration-300 hover:border-yellow-400 hover:shadow-md"
               >
                 <div class="flex items-center gap-4 mb-3">
-                  <img :src="skill.icon" alt="" class="w-8 h-8" />
+                  <img :src="skill.icon" alt="" class="min-w-8 h-8" />
                   <h4 class="text-xl font-bold text-gray-900">{{ skill.name }}</h4>
-                </div>
-                <div class="flex items-center gap-2">
-                  <div class="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      :class="[
-                        'h-full rounded-full transition-all duration-500',
-                        skill.level === 'Advanced'
-                          ? 'w-[90%] bg-gradient-to-r from-yellow-600 to-yellow-400'
-                          : 'w-[70%] bg-gradient-to-r from-yellow-500 to-yellow-300',
-                      ]"
-                    ></div>
-                  </div>
-                  <span class="text-sm font-semibold text-yellow-600">{{ skill.level }}</span>
                 </div>
               </div>
             </div>
@@ -134,24 +124,11 @@ const secondHalf = computed(() => skills.slice(midpoint))
               <div
                 v-for="(skill, index) in [...secondHalf, ...secondHalf]"
                 :key="`row2-${index}`"
-                class="group flex-shrink-0 w-72 rounded-xl bg-white p-6 shadow-sm border-2 border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md"
+                class="group flex-shrink-0 rounded-xl bg-white p-6 shadow-sm border-2 border-dotted transition-all duration-300 hover:border-yellow-400 hover:shadow-md"
               >
                 <div class="flex items-center gap-4 mb-3">
-                  <img :src="skill.icon" alt="" class="w-8 h-8" />
+                  <img :src="skill.icon" alt="" class="min-w-8 h-8" />
                   <h4 class="text-xl font-bold text-gray-900">{{ skill.name }}</h4>
-                </div>
-                <div class="flex items-center gap-2">
-                  <div class="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      :class="[
-                        'h-full rounded-full transition-all duration-500',
-                        skill.level === 'Advanced'
-                          ? 'w-[90%] bg-gradient-to-r from-yellow-600 to-yellow-400'
-                          : 'w-[70%] bg-gradient-to-r from-yellow-500 to-yellow-300',
-                      ]"
-                    ></div>
-                  </div>
-                  <span class="text-sm font-semibold text-yellow-600">{{ skill.level }}</span>
                 </div>
               </div>
             </div>

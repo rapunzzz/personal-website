@@ -133,7 +133,7 @@ const handleClick = (e: MouseEvent, href: string) => {
         >
           <a
             href="#projects"
-            @click="(e) => handleClick(e, '#projects')"
+            @click="(e: MouseEvent) => handleClick(e, '#projects')"
             class="group inline-flex items-center gap-2 rounded-full bg-yellow-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-yellow-700 hover:shadow-xl hover:scale-105"
           >
             View My Work
@@ -141,7 +141,7 @@ const handleClick = (e: MouseEvent, href: string) => {
           </a>
           <a
             href="#contact"
-            @click="(e) => handleClick(e, '#contact')"
+            @click="(e: MouseEvent) => handleClick(e, '#contact')"
             class="inline-flex items-center gap-2 rounded-full border-2 border-yellow-600 bg-white px-8 py-4 text-base font-semibold text-yellow-600 transition-all hover:bg-yellow-50 hover:scale-105"
           >
             Get In Touch

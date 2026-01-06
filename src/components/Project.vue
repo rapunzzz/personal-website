@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { ExternalLink, Github, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-vue-next'
 
 const projects = [
   {
@@ -9,7 +9,6 @@ const projects = [
       'A Learning Management System designed to support students in managing courses, tracking academic rankings, and evaluating performance effectively.',
     image: '/images/70econ.png',
     tech: ['Next.js', 'Express.js', 'TypeScript', 'Tailwind', 'Prisma', 'PostgreSQL'],
-    github: '#',
     live: 'https://70e-con.vercel.app/',
     featured: false,
   },
@@ -19,7 +18,6 @@ const projects = [
       'A simplified movie streaming application featuring movie listings, trailers, and subscription management.',
     image: '/images/PacilFlix.png',
     tech: ['Django', 'Python', 'SQLite'],
-    github: '#',
     live: '#',
     featured: false,
   },
@@ -29,7 +27,6 @@ const projects = [
       'An Educational Application designed to help users learn history in an interactive and engaging way.',
     image: '/images/HistorySphere.png',
     tech: ['Figma'],
-    github: '#',
     live: '#',
     featured: false,
   },
@@ -63,13 +60,25 @@ const prevProject = () => {
 const toggleFunProjects = () => {
   showFunProjects.value = !showFunProjects.value
 }
+
+// Function to check if link is available
+const isLinkAvailable = (url: string) => {
+  return url && url !== '#' && url !== ''
+}
+
+// Function to handle link click
+const handleLiveClick = (url: string, title: string, event: Event) => {
+  if (!isLinkAvailable(url)) {
+    event.preventDefault()
+    alert(
+      `🚧 Project "${title}" belum dipublikasikan.\n\nProject ini masih dalam tahap development atau belum tersedia untuk publik.`,
+    )
+  }
+}
 </script>
 
 <template>
-  <section
-    id="projects"
-    class="relative min-h-screen bg-gradient-to-b from-yellow-50 to-white py-20"
-  >
+  <section id="projects" class="relative min-h-screen py-20">
     <div class="container relative z-10 mx-auto px-4">
       <!-- Header -->
       <div class="mb-16 text-center">
@@ -114,6 +123,15 @@ const toggleFunProjects = () => {
             ⭐ Featured
           </div>
 
+          <!-- Not Available Badge -->
+          <div
+            v-if="!isLinkAvailable(project.live)"
+            class="absolute top-4 left-4 z-20 flex items-center gap-1 rounded-full bg-gray-600/90 px-3 py-1 text-xs font-semibold text-white shadow-lg backdrop-blur-sm"
+          >
+            <AlertCircle :size="12" />
+            Not Public
+          </div>
+
           <!-- Image Container -->
           <div
             class="relative aspect-video overflow-hidden bg-gradient-to-br from-yellow-100 to-yellow-50"
@@ -133,21 +151,19 @@ const toggleFunProjects = () => {
             >
               <a
                 :href="project.live"
+                @click="(e) => handleLiveClick(project.live, project.title, e)"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-yellow-600 shadow-lg transition-transform hover:scale-110"
+                :class="[
+                  'flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold shadow-lg transition-transform hover:scale-110',
+                  isLinkAvailable(project.live)
+                    ? 'bg-white text-yellow-600'
+                    : 'bg-gray-600 text-white cursor-not-allowed',
+                ]"
               >
                 <ExternalLink :size="16" />
-                View Live
-              </a>
-              <a
-                v-if="project.github !== '#'"
-                :href="project.github"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center justify-center rounded-full bg-gray-900 p-3 text-white shadow-lg transition-transform hover:scale-110"
-              >
-                <Github :size="18" />
+                <span v-if="isLinkAvailable(project.live)">View Live</span>
+                <span v-else>Not Available</span>
               </a>
             </div>
           </div>
