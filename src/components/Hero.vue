@@ -51,13 +51,12 @@ const handleClick = (e: MouseEvent, href: string) => {
             transition: { duration: 600, delay: 100 },
           }"
           :visible-once="false"
-          class="mb-4 text-lg text-gray-600 sm:text-xl"
+          class="mb-4 text-base text-gray-600 sm:text-lg sm:text-xl"
         >
           Hi, I'm
         </p>
 
-        <!-- Name with letter animation -->
-        <h1 class="mb-6 text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl">
+        <h1 class="mb-6 text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-8xl">
           <span
             v-for="(letter, index) in letters"
             :key="index"
@@ -77,7 +76,7 @@ const handleClick = (e: MouseEvent, href: string) => {
             :visible-once="false"
             :class="[
               'inline-block',
-              letter === ' ' ? 'w-4' : '',
+              letter === ' ' ? 'w-2 sm:w-4' : '',
               index < 7 || index >= 14 ? 'text-yellow-600' : 'text-gray-800',
             ]"
           >
@@ -98,7 +97,7 @@ const handleClick = (e: MouseEvent, href: string) => {
           class="mb-8"
         >
           <p
-            class="inline-block text-2xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent sm:text-3xl"
+            class="inline-block text-xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent sm:text-2xl sm:text-3xl"
           >
             Full-Stack Developer
           </p>
@@ -113,7 +112,7 @@ const handleClick = (e: MouseEvent, href: string) => {
             y: 0,
             transition: { duration: 600, delay: 1400 },
           }"
-          class="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl"
+          class="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg sm:text-xl"
         >
           Building full-stack systems with clean backend logic and well-structured APIs, designed to
           solve real problems with practical, scalable solutions.
@@ -134,7 +133,7 @@ const handleClick = (e: MouseEvent, href: string) => {
           <a
             href="#projects"
             @click="(e: MouseEvent) => handleClick(e, '#projects')"
-            class="group inline-flex items-center gap-2 rounded-full bg-yellow-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-yellow-700 hover:shadow-xl hover:scale-105"
+            class="group inline-flex items-center gap-2 rounded-full bg-yellow-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-yellow-700 hover:shadow-xl hover:scale-105 sm:px-8 sm:py-4 sm:text-base"
           >
             View My Work
             <ArrowDown :size="18" class="transition-transform group-hover:translate-y-1" />
@@ -142,7 +141,7 @@ const handleClick = (e: MouseEvent, href: string) => {
           <a
             href="#contact"
             @click="(e: MouseEvent) => handleClick(e, '#contact')"
-            class="inline-flex items-center gap-2 rounded-full border-2 border-yellow-600 bg-white px-8 py-4 text-base font-semibold text-yellow-600 transition-all hover:bg-yellow-50 hover:scale-105"
+            class="inline-flex items-center gap-2 rounded-full border-2 border-yellow-600 bg-white px-6 py-3 text-sm font-semibold text-yellow-600 transition-all hover:bg-yellow-50 hover:scale-105 sm:px-8 sm:py-4 sm:text-base"
           >
             Get In Touch
           </a>

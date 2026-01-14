@@ -29,8 +29,8 @@ const setupObserver = () => {
 
   const observerOptions = {
     root: null,
-    rootMargin: '-20% 0px -60% 0px', // Trigger saat bagian atas section masuk 20% dari viewport
-    threshold: 0, // Trigger segera saat terlihat
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0,
   }
 
   const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -52,20 +52,14 @@ const setupObserver = () => {
     }
   })
 
-  // If sections not found, retry
   if (foundCount === 0) {
     setTimeout(setupObserver, 100)
   }
 }
 
 onMounted(() => {
-  // Try immediately
   setupObserver()
-
-  // Also try after a short delay as backup
   setTimeout(setupObserver, 200)
-
-  // And try when window loads (for slow connections)
   window.addEventListener('load', setupObserver)
 })
 
@@ -88,12 +82,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 px-4 sm:bottom-8 z-50">
+  <nav class="fixed bottom-3 left-1/2 -translate-x-1/2 px-2 sm:bottom-8 sm:px-4 z-50">
     <div
       v-motion
       :initial="{ y: 100, opacity: 0 }"
       :enter="{ y: 0, opacity: 1, transition: { duration: 600, delay: 300 } }"
-      class="flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-lg px-2 py-2 shadow-2xl border border-gray-200 sm:gap-2 sm:px-3"
+      class="flex items-center justify-center gap-0.5 rounded-full bg-white/90 backdrop-blur-lg px-1.5 py-1.5 shadow-2xl border border-gray-200 sm:gap-2 sm:px-3 sm:py-2"
     >
       <a
         v-for="item in navItems"
@@ -101,7 +95,7 @@ onUnmounted(() => {
         :href="item.href"
         @click="(e) => handleClick(e, item.href)"
         :class="[
-          'group relative flex items-center justify-center gap-1 px-4 py-2 rounded-full transition-all duration-300 sm:gap-2 sm:px-5 sm:py-2.5',
+          'group relative flex items-center justify-center gap-1 px-2 py-1.5 rounded-full transition-all duration-300 text-xs sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm',
           activeSection === item.href.replace('#', '')
             ? 'text-white'
             : 'text-gray-600 hover:text-yellow-600 hover:bg-yellow-50',
@@ -120,14 +114,17 @@ onUnmounted(() => {
         ></span>
 
         <!-- Text -->
-        <span class="text-sm font-semibold relative z-10 whitespace-nowrap">{{ item.name }}</span>
+        <span class="font-semibold relative z-10 whitespace-nowrap">{{ item.name }}</span>
 
         <!-- Active dot indicator -->
-        <span v-if="activeSection === item.href.replace('#', '')" class="relative flex h-2 w-2">
+        <span
+          v-if="activeSection === item.href.replace('#', '')"
+          class="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2"
+        >
           <span
             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"
           ></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-white"></span>
         </span>
       </a>
     </div>
