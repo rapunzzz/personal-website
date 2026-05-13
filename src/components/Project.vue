@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ExternalLink, Github, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-vue-next'
+import { ExternalLink, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-vue-next'
 
 const projects = [
   {
@@ -11,6 +11,7 @@ const projects = [
     tech: ['Next.js', 'Express.js', 'TypeScript', 'Tailwind', 'Prisma', 'PostgreSQL'],
     live: 'https://70e-con.vercel.app/',
     featured: false,
+    accentColor: 'bg-nb-yellow',
   },
   {
     title: 'PacilFlix',
@@ -20,6 +21,7 @@ const projects = [
     tech: ['Django', 'Python', 'SQLite'],
     live: '#',
     featured: false,
+    accentColor: 'bg-nb-coral',
   },
   {
     title: 'HistorySphere',
@@ -29,6 +31,7 @@ const projects = [
     tech: ['Figma'],
     live: '#',
     featured: false,
+    accentColor: 'bg-nb-blue',
   },
 ]
 
@@ -78,26 +81,25 @@ const handleLiveClick = (url: string, title: string, event: Event) => {
 </script>
 
 <template>
-  <section id="projects" class="relative min-h-screen py-20">
-    <div class="container relative z-10 mx-auto px-4">
+  <section id="projects" class="relative bg-nb-offwhite py-16 sm:py-24 border-b-[3px] border-nb-black">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
       <!-- Header -->
-      <div class="mb-16 text-center">
-        <h2
+      <div class="mb-16">
+        <div
           v-motion
           :initial="{ opacity: 0, y: 30 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
-          :visible-once="false"
-          class="mb-4 text-4xl font-extrabold text-gray-900 sm:text-5xl"
         >
-          My <span class="text-yellow-600">Projects</span>
-        </h2>
-        <div
-          v-motion
-          :initial="{ opacity: 0, scaleX: 0 }"
-          :enter="{ opacity: 1, scaleX: 1, transition: { duration: 600, delay: 200 } }"
-          :visible-once="false"
-          class="mx-auto h-1 w-24 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full"
-        ></div>
+          <div
+            class="inline-block bg-nb-green border-[3px] border-nb-black px-4 py-2 mb-6"
+            style="box-shadow: #000000 3px 3px 0px 0px"
+          >
+            <span class="font-space-mono text-sm font-bold text-nb-black">03 //</span>
+          </div>
+          <h2 class="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-nb-black leading-tight">
+            My <span class="bg-nb-coral px-2 border-[2px] border-nb-black inline-block text-nb-white">Projects</span>
+          </h2>
+        </div>
       </div>
 
       <!-- Projects Grid -->
@@ -112,89 +114,77 @@ const handleLiveClick = (url: string, title: string, event: Event) => {
             y: 0,
             transition: { type: 'spring', stiffness: 100, damping: 15, delay: 400 + index * 150 },
           }"
-          :visible-once="false"
-          class="group relative overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+          class="group relative"
         >
-          <!-- Featured Badge -->
           <div
-            v-if="project.featured"
-            class="absolute top-4 right-4 z-20 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-400 px-3 py-1 text-xs font-bold text-white shadow-lg"
+            class="bg-nb-white border-[3px] border-nb-black overflow-hidden transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+            style="box-shadow: #000000 8px 8px 0px 0px"
           >
-            ⭐ Featured
-          </div>
-
-          <!-- Not Available Badge -->
-          <div
-            v-if="!isLinkAvailable(project.live)"
-            class="absolute top-4 left-4 z-20 flex items-center gap-1 rounded-full bg-gray-600/90 px-3 py-1 text-xs font-semibold text-white shadow-lg backdrop-blur-sm"
-          >
-            <AlertCircle :size="12" />
-            Not Public
-          </div>
-
-          <!-- Image Container -->
-          <div
-            class="relative aspect-video overflow-hidden bg-gradient-to-br from-yellow-100 to-yellow-50"
-          >
-            <img
-              :src="project.image"
-              :alt="project.title"
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
+            <!-- Not Available Badge -->
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            ></div>
-
-            <!-- Quick Action Buttons on Image -->
-            <div
-              class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              v-if="!isLinkAvailable(project.live)"
+              class="absolute top-4 left-4 z-20 flex items-center gap-1 bg-nb-black border-[2px] border-nb-black px-3 py-1 text-nb-white font-space-mono text-xs font-bold"
             >
-              <a
-                :href="project.live"
-                @click="(e) => handleLiveClick(project.live, project.title, e)"
-                target="_blank"
-                rel="noopener noreferrer"
-                :class="[
-                  'flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold shadow-lg transition-transform hover:scale-110',
-                  isLinkAvailable(project.live)
-                    ? 'bg-white text-yellow-600'
-                    : 'bg-gray-600 text-white cursor-not-allowed',
-                ]"
+              <AlertCircle :size="12" />
+              NOT PUBLIC
+            </div>
+
+            <!-- Image Container -->
+            <div
+              class="relative aspect-video overflow-hidden border-b-[3px] border-nb-black"
+              :class="project.accentColor"
+            >
+              <img
+                :src="project.image"
+                :alt="project.title"
+                class="h-full w-full object-cover"
+              />
+
+              <!-- Overlay on hover -->
+              <div
+                class="absolute inset-0 bg-nb-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
               >
-                <ExternalLink :size="16" />
-                <span v-if="isLinkAvailable(project.live)">View Live</span>
-                <span v-else>Not Available</span>
-              </a>
+                <a
+                  :href="project.live"
+                  @click="(e) => handleLiveClick(project.live, project.title, e)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :class="[
+                    'flex items-center gap-2 font-space-grotesk font-bold text-sm px-5 py-2.5 border-[3px] border-nb-black transition-all',
+                    isLinkAvailable(project.live)
+                      ? 'bg-nb-yellow text-nb-black hover:translate-x-[1px] hover:translate-y-[1px]'
+                      : 'bg-nb-gray-dark text-nb-white cursor-not-allowed',
+                  ]"
+                  style="box-shadow: #000000 3px 3px 0px 0px"
+                >
+                  <ExternalLink :size="16" />
+                  <span v-if="isLinkAvailable(project.live)">View Live</span>
+                  <span v-else>Not Available</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <h3 class="font-space-grotesk text-2xl font-bold text-nb-black mb-3">
+                {{ project.title }}
+              </h3>
+              <p class="font-inter text-base text-nb-gray-dark leading-relaxed mb-5 line-clamp-3">
+                {{ project.description }}
+              </p>
+
+              <!-- Tech Stack -->
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="tech in project.tech"
+                  :key="tech"
+                  class="font-space-mono text-xs font-bold bg-nb-offwhite border-[2px] border-nb-black px-2.5 py-1 text-nb-black"
+                >
+                  {{ tech }}
+                </span>
+              </div>
             </div>
           </div>
-
-          <!-- Content -->
-          <div class="p-6">
-            <h3
-              class="mb-3 text-2xl font-bold text-gray-900 group-hover:text-yellow-600 transition-colors"
-            >
-              {{ project.title }}
-            </h3>
-            <p class="mb-4 text-gray-600 leading-relaxed line-clamp-3">
-              {{ project.description }}
-            </p>
-
-            <!-- Tech Stack -->
-            <div class="mb-5 flex flex-wrap gap-2">
-              <span
-                v-for="tech in project.tech"
-                :key="tech"
-                class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700 transition-colors hover:bg-yellow-200"
-              >
-                {{ tech }}
-              </span>
-            </div>
-          </div>
-
-          <!-- Decorative gradient border on hover -->
-          <div
-            class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-yellow-400 transition-colors pointer-events-none"
-          ></div>
         </div>
       </div>
 
@@ -203,14 +193,14 @@ const handleLiveClick = (url: string, title: string, event: Event) => {
         v-motion
         :initial="{ opacity: 0, y: 20 }"
         :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 900 } }"
-        :visible-once="false"
-        class="mt-12 text-center"
+        class="mt-16 text-center"
       >
         <button
           @click="toggleFunProjects"
-          class="inline-flex items-center gap-2 rounded-full border-2 border-yellow-600 bg-gradient-to-r from-yellow-600 to-yellow-500 px-8 py-3 text-base font-semibold text-white transition-all hover:scale-105 hover:shadow-lg"
+          class="inline-flex items-center gap-2 bg-nb-black text-nb-white font-space-grotesk font-bold text-base px-8 py-3 border-[3px] border-nb-black transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+          style="box-shadow: #FF6B6B 5px 5px 0px 0px"
         >
-          <span v-if="!showFunProjects">Want to see my fun projects?</span>
+          <span v-if="!showFunProjects">🎮 Want to see my fun projects?</span>
           <span v-else>Hide Fun Projects</span>
         </button>
       </div>
@@ -225,95 +215,90 @@ const handleLiveClick = (url: string, title: string, event: Event) => {
         leave-to-class="opacity-0 -translate-y-4"
       >
         <div v-if="showFunProjects" class="mt-12">
-          <div class="mx-auto max-w-7xl px-4">
-            <!-- Enhanced Project Info Header with Gradient -->
-            <div class="mb-8 text-center relative">
-              <div class="inline-block relative">
-                <h3
-                  class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-600 via-pink-500 to-yellow-600 bg-clip-text text-transparent mb-3 animate-gradient"
-                >
-                  {{ funProjects[currentProjectIndex]?.title }}
-                </h3>
-                <div
-                  class="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 via-pink-500 to-yellow-600 rounded-full animate-gradient"
-                ></div>
-              </div>
-              <p class="text-gray-600 mt-4 text-lg">
+          <div class="max-w-[1440px] mx-auto">
+            <!-- Project Info Header -->
+            <div class="mb-8 text-center">
+              <h3 class="font-syne font-extrabold text-3xl sm:text-4xl text-nb-black mb-3">
+                {{ funProjects[currentProjectIndex]?.title }}
+              </h3>
+              <p class="font-space-grotesk text-lg text-nb-gray-dark mb-4">
                 {{ funProjects[currentProjectIndex]?.description }}
               </p>
               <a
                 :href="funProjects[currentProjectIndex]?.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 mt-4 px-5 py-2 rounded-full bg-gradient-to-r from-yellow-600 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+                class="inline-flex items-center gap-2 bg-nb-yellow text-nb-black font-space-grotesk font-bold text-sm px-5 py-2.5 border-[3px] border-nb-black transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+                style="box-shadow: #000000 3px 3px 0px 0px"
               >
-                <ExternalLink :size="18" />
+                <ExternalLink :size="16" />
                 Open in new tab
               </a>
             </div>
 
-            <!-- Carousel Container - Optimized Size -->
-            <div
-              class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-yellow-100 to-pink-100 p-2 md:p-4"
-            >
-              <!-- Navigation Buttons -->
-              <button
-                @click="prevProject"
-                class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/95 p-2 md:p-3 shadow-xl transition-all hover:bg-white hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-                :disabled="funProjects.length <= 1"
-              >
-                <ChevronLeft :size="20" class="text-yellow-600 md:w-6 md:h-6" />
-              </button>
-
-              <button
-                @click="nextProject"
-                class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/95 p-2 md:p-3 shadow-xl transition-all hover:bg-white hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-                :disabled="funProjects.length <= 1"
-              >
-                <ChevronRight :size="20" class="text-yellow-600 md:w-6 md:h-6" />
-              </button>
-
-              <!-- iframe Viewer - Better responsive sizing -->
+            <!-- Carousel Container -->
+            <div class="relative">
               <div
-                class="relative bg-white rounded-xl overflow-hidden shadow-inner iframe-container"
+                class="bg-nb-white border-[3px] border-nb-black p-2 sm:p-4"
+                style="box-shadow: #000000 8px 8px 0px 0px"
               >
-                <iframe
-                  :key="currentProjectIndex"
-                  :src="funProjects[currentProjectIndex]?.url"
-                  class="w-full h-full border-0"
-                  loading="lazy"
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-                  title="Project Preview"
-                ></iframe>
+                <!-- Navigation Buttons -->
+                <button
+                  @click="prevProject"
+                  class="absolute left-[-20px] top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-nb-white border-[3px] border-nb-black flex items-center justify-center transition-all hover:bg-nb-yellow hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+                  style="box-shadow: #000000 3px 3px 0px 0px"
+                  :disabled="funProjects.length <= 1"
+                >
+                  <ChevronLeft :size="20" class="text-nb-black" />
+                </button>
+
+                <button
+                  @click="nextProject"
+                  class="absolute right-[-20px] top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-nb-white border-[3px] border-nb-black flex items-center justify-center transition-all hover:bg-nb-yellow hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+                  style="box-shadow: #000000 3px 3px 0px 0px"
+                  :disabled="funProjects.length <= 1"
+                >
+                  <ChevronRight :size="20" class="text-nb-black" />
+                </button>
+
+                <!-- iframe Viewer -->
+                <div class="bg-nb-offwhite border-[3px] border-nb-black overflow-hidden iframe-container">
+                  <iframe
+                    :key="currentProjectIndex"
+                    :src="funProjects[currentProjectIndex]?.url"
+                    class="w-full h-full border-0"
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                    title="Project Preview"
+                  ></iframe>
+                </div>
               </div>
 
-              <!-- Dots Indicator with Animation -->
-              <div class="flex justify-center gap-2 mt-4 mb-2">
+              <!-- Dots Indicator -->
+              <div class="flex justify-center gap-2 mt-6">
                 <button
                   v-for="(project, index) in funProjects"
                   :key="index"
                   @click="currentProjectIndex = index"
                   :class="[
-                    'h-2.5 rounded-full transition-all duration-300',
+                    'h-3 border-[2px] border-nb-black transition-all',
                     currentProjectIndex === index
-                      ? 'w-10 bg-gradient-to-r from-yellow-600 to-pink-500 shadow-md'
-                      : 'w-2.5 bg-gray-300 hover:bg-gray-400',
+                      ? 'w-10 bg-nb-yellow'
+                      : 'w-3 bg-nb-white hover:bg-nb-offwhite',
                   ]"
                   :title="project.title"
                 ></button>
               </div>
-            </div>
 
-            <!-- Project Counter with Style -->
-            <div class="mt-4 text-center">
-              <span
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-md text-sm font-semibold text-gray-700"
-              >
+              <!-- Project Counter -->
+              <div class="mt-4 text-center">
                 <span
-                  class="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-600 to-pink-500 animate-pulse"
-                ></span>
-                {{ currentProjectIndex + 1 }} / {{ funProjects.length }}
-              </span>
+                  class="inline-flex items-center gap-2 font-space-mono text-sm font-bold bg-nb-white border-[2px] border-nb-black px-4 py-1.5 text-nb-black"
+                >
+                  <span class="w-2 h-2 bg-nb-coral border-[1px] border-nb-black"></span>
+                  {{ currentProjectIndex + 1 }} / {{ funProjects.length }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -345,22 +330,5 @@ const handleLiveClick = (url: string, title: string, event: Event) => {
     min-height: 700px;
     max-height: 1000px;
   }
-}
-
-/* Animated gradient */
-@keyframes gradient {
-  0%,
-  100% {
-    background-size: 200% 200%;
-    background-position: left center;
-  }
-  50% {
-    background-size: 200% 200%;
-    background-position: right center;
-  }
-}
-
-.animate-gradient {
-  animation: gradient 3s ease infinite;
 }
 </style>

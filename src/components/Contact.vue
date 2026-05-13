@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useElementVisibility } from '@vueuse/core'
-import { Mail, Phone, MapPin, Send } from 'lucide-vue-next'
-
-const sectionRef = ref<HTMLElement | null>(null)
-const isVisible = useElementVisibility(sectionRef)
+import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-vue-next'
 
 const formData = ref({
   name: '',
@@ -39,24 +35,34 @@ const contactInfo = [
     label: 'Email',
     value: 'kurniathaariq55@gmail.com',
     href: 'mailto:kurniathaariq55@gmail.com',
-    color: 'text-yellow-600',
-    bgColor: 'bg-yellow-100',
+    accentColor: 'bg-nb-coral',
   },
   {
     icon: Phone,
     label: 'Phone',
     value: '+62 851 564 328 71',
     href: 'tel:+6285156432871',
-    color: 'text-green-600',
-    bgColor: 'bg-green-100',
+    accentColor: 'bg-nb-green',
   },
   {
     icon: MapPin,
     label: 'Location',
     value: 'Depok, Indonesia',
     href: '#',
-    color: 'text-yellow-600',
-    bgColor: 'bg-yellow-100',
+    accentColor: 'bg-nb-blue',
+  },
+]
+
+const socialLinks = [
+  {
+    icon: Github,
+    label: 'GitHub',
+    href: 'https://github.com/rapunzzz',
+  },
+  {
+    icon: Linkedin,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/thaariqkurnia',
   },
 ]
 </script>
@@ -64,40 +70,29 @@ const contactInfo = [
 <template>
   <section
     id="contact"
-    class="relative min-h-screen bg-gradient-to-b from-white to-yellow-50 py-20"
+    class="relative bg-nb-white py-16 sm:py-24 border-b-[3px] border-nb-black"
   >
-    <!-- Background Decoration -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div
-        class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-yellow-200 opacity-20 blur-3xl"
-      ></div>
-      <div
-        class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-yellow-300 opacity-20 blur-3xl"
-      ></div>
-    </div>
-
-    <div class="container relative z-10 mx-auto px-4">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
       <!-- Header -->
-      <div class="mb-16 text-center">
-        <h2
+      <div class="mb-16">
+        <div
           v-motion
           :initial="{ opacity: 0, y: 30 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
-          :visible-once="false"
-          class="mb-4 text-4xl font-extrabold text-gray-900 sm:text-5xl"
         >
-          Let's <span class="text-yellow-600">Connect</span>
-        </h2>
-        <div
-          v-motion
-          :initial="{ opacity: 0, scaleX: 0 }"
-          :enter="{ opacity: 1, scaleX: 1, transition: { duration: 600, delay: 200 } }"
-          :visible-once="false"
-          class="mx-auto h-1 w-24 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full"
-        ></div>
+          <div
+            class="inline-block bg-nb-yellow border-[3px] border-nb-black px-4 py-2 mb-6"
+            style="box-shadow: #000000 3px 3px 0px 0px"
+          >
+            <span class="font-space-mono text-sm font-bold text-nb-black">04 //</span>
+          </div>
+          <h2 class="font-syne font-extrabold text-3xl sm:text-4xl lg:text-5xl text-nb-black leading-tight">
+            Let's <span class="bg-nb-yellow px-2 border-[2px] border-nb-black inline-block">Connect</span>
+          </h2>
+        </div>
       </div>
 
-      <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-5">
+      <div class="grid gap-8 lg:grid-cols-5">
         <!-- Contact Information Cards -->
         <div class="lg:col-span-2 space-y-6">
           <div
@@ -115,30 +110,31 @@ const contactInfo = [
                 delay: 400 + index * 150,
               },
             }"
-            :visible-once="false"
-            class="group"
           >
             <a
               :href="info.href"
               :class="[
-                'block rounded-2xl bg-white p-6 shadow-lg transition-all duration-300',
-                info.href !== '#' ? 'hover:shadow-2xl hover:-translate-y-1' : 'cursor-default',
+                'block bg-nb-white border-[3px] border-nb-black p-5 transition-all',
+                info.href !== '#'
+                  ? 'hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none cursor-pointer'
+                  : 'cursor-default',
               ]"
+              style="box-shadow: #000000 5px 5px 0px 0px"
             >
-              <div class="flex items-start gap-4">
+              <div class="flex items-center gap-4">
                 <div
                   :class="[
-                    'flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl',
-                    info.bgColor,
+                    info.accentColor,
+                    'w-12 h-12 border-[3px] border-nb-black flex items-center justify-center flex-shrink-0',
                   ]"
                 >
-                  <component :is="info.icon" :size="24" :class="info.color" />
+                  <component :is="info.icon" :size="20" class="text-nb-black" />
                 </div>
-                <div class="flex-1 min-w-0">
-                  <h3 class="mb-1 text-sm font-semibold text-gray-500 uppercase tracking-wide">
+                <div class="min-w-0">
+                  <h3 class="font-space-grotesk font-bold text-xs uppercase tracking-wider text-nb-gray-dark mb-0.5">
                     {{ info.label }}
                   </h3>
-                  <p :class="['text-base font-semibold break-words', info.color]">
+                  <p class="font-inter font-medium text-base text-nb-black break-words">
                     {{ info.value }}
                   </p>
                 </div>
@@ -146,7 +142,7 @@ const contactInfo = [
             </a>
           </div>
 
-          <!-- Additional Info Card -->
+          <!-- CTA Card with Mascot -->
           <div
             v-motion
             :initial="{ opacity: 0, x: -50 }"
@@ -160,14 +156,42 @@ const contactInfo = [
                 delay: 850,
               },
             }"
-            :visible-once="false"
-            class="rounded-2xl bg-gradient-to-br from-yellow-600 to-yellow-400 p-6 text-white shadow-lg"
           >
-            <h3 class="mb-3 text-xl font-bold">Always Open for Opportunities</h3>
-            <p class="text-sm leading-relaxed opacity-90">
-              Whether it's a project, collaboration, or just saying hi. I respond within 24 hours!
-              Urgent matters? Mention it upfront!
-            </p>
+            <div
+              class="bg-nb-black border-[3px] border-nb-black p-6"
+              style="box-shadow: #FFD23F 5px 5px 0px 0px"
+            >
+              <div class="flex items-start gap-4">
+                <img
+                  src="/images/mascot-waving.png"
+                  alt="Mascot waving"
+                  class="w-16 h-16 object-contain flex-shrink-0"
+                />
+                <div>
+                  <h3 class="font-space-grotesk font-bold text-lg text-nb-white mb-2">
+                    Always Open for Opportunities
+                  </h3>
+                  <p class="font-inter text-sm text-nb-gray-vlight leading-relaxed">
+                    Whether it's a project, collaboration, or just saying hi. I respond within 24 hours!
+                  </p>
+                </div>
+              </div>
+
+              <!-- Social links -->
+              <div class="flex gap-3 mt-5">
+                <a
+                  v-for="social in socialLinks"
+                  :key="social.label"
+                  :href="social.href"
+                  target="_blank"
+                  rel="noreferrer"
+                  :aria-label="social.label"
+                  class="w-10 h-10 bg-nb-white border-[2px] border-nb-white flex items-center justify-center text-nb-black transition-all hover:bg-nb-yellow"
+                >
+                  <component :is="social.icon" :size="18" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -186,53 +210,56 @@ const contactInfo = [
                 delay: 600,
               },
             }"
-            :visible-once="false"
             @submit="handleSubmit"
-            class="rounded-2xl bg-white p-8 shadow-xl"
+            class="bg-nb-white border-[3px] border-nb-black p-6 sm:p-8"
+            style="box-shadow: #000000 8px 8px 0px 0px"
           >
             <div class="space-y-6">
               <!-- Name Input -->
               <div>
-                <label for="name" class="mb-2 block text-sm font-semibold text-gray-700">
-                  Your Name <span class="text-red-500">*</span>
+                <label for="contact-name" class="block font-space-grotesk font-bold text-sm text-nb-black mb-2 uppercase tracking-wide">
+                  Your Name <span class="text-nb-coral">*</span>
                 </label>
                 <input
-                  id="name"
+                  id="contact-name"
                   v-model="formData.name"
                   type="text"
                   required
                   placeholder="King Rapunzz"
-                  class="w-full rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-yellow-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-200"
+                  class="w-full font-inter text-base bg-nb-white text-nb-black px-4 py-3 border-[3px] border-nb-black placeholder:text-nb-gray-light focus:outline-none transition-all"
+                  style="box-shadow: #000000 3px 3px 0px 0px"
                 />
               </div>
 
               <!-- Email Input -->
               <div>
-                <label for="email" class="mb-2 block text-sm font-semibold text-gray-700">
-                  Email Address <span class="text-red-500">*</span>
+                <label for="contact-email" class="block font-space-grotesk font-bold text-sm text-nb-black mb-2 uppercase tracking-wide">
+                  Email Address <span class="text-nb-coral">*</span>
                 </label>
                 <input
-                  id="email"
+                  id="contact-email"
                   v-model="formData.email"
                   type="email"
                   required
                   placeholder="rapunzz@example.com"
-                  class="w-full rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-yellow-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-200"
+                  class="w-full font-inter text-base bg-nb-white text-nb-black px-4 py-3 border-[3px] border-nb-black placeholder:text-nb-gray-light focus:outline-none transition-all"
+                  style="box-shadow: #000000 3px 3px 0px 0px"
                 />
               </div>
 
               <!-- Message Textarea -->
               <div>
-                <label for="message" class="mb-2 block text-sm font-semibold text-gray-700">
-                  Your Message <span class="text-red-500">*</span>
+                <label for="contact-message" class="block font-space-grotesk font-bold text-sm text-nb-black mb-2 uppercase tracking-wide">
+                  Your Message <span class="text-nb-coral">*</span>
                 </label>
                 <textarea
-                  id="message"
+                  id="contact-message"
                   v-model="formData.message"
                   rows="5"
                   required
                   placeholder="Tell me about your project or just say hi!"
-                  class="w-full resize-none rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all focus:border-yellow-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-200"
+                  class="w-full font-inter text-base bg-nb-white text-nb-black px-4 py-3 border-[3px] border-nb-black placeholder:text-nb-gray-light focus:outline-none resize-both transition-all"
+                  style="box-shadow: #000000 3px 3px 0px 0px"
                 ></textarea>
               </div>
 
@@ -240,16 +267,17 @@ const contactInfo = [
               <button
                 type="submit"
                 :disabled="isSubmitting || submitSuccess"
-                class="group relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-yellow-600 to-yellow-400 px-6 py-4 text-base font-semibold text-white shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+                class="w-full flex items-center justify-center gap-2 bg-nb-black text-nb-white font-space-grotesk font-bold text-base px-6 py-4 border-[3px] border-nb-black transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-x-0 disabled:hover:translate-y-0"
+                :style="submitSuccess ? 'box-shadow: #88D498 5px 5px 0px 0px' : 'box-shadow: #FF6B6B 5px 5px 0px 0px'"
               >
                 <span
                   v-if="!isSubmitting && !submitSuccess"
-                  class="flex items-center justify-center gap-2"
+                  class="flex items-center gap-2"
                 >
-                  Send Message
-                  <Send :size="18" class="transition-transform group-hover:translate-x-1" />
+                  SEND MESSAGE
+                  <Send :size="18" />
                 </span>
-                <span v-else-if="isSubmitting" class="flex items-center justify-center gap-2">
+                <span v-else-if="isSubmitting" class="flex items-center gap-2">
                   <svg
                     class="animate-spin h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -270,9 +298,11 @@ const contactInfo = [
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                   </svg>
-                  Sending...
+                  SENDING...
                 </span>
-                <span v-else class="flex items-center justify-center gap-2"> ✓ Message Sent! </span>
+                <span v-else class="flex items-center gap-2">
+                  ✓ MESSAGE SENT!
+                </span>
               </button>
             </div>
           </form>
@@ -280,4 +310,28 @@ const contactInfo = [
       </div>
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer class="bg-nb-black border-t-[3px] border-nb-black py-8">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="font-space-mono text-sm text-nb-gray-vlight">
+          &copy; {{ new Date().getFullYear() }} Thaariq Kurnia Spama. Built with 💛
+        </p>
+        <div class="flex items-center gap-3">
+          <a
+            v-for="social in socialLinks"
+            :key="social.label"
+            :href="social.href"
+            target="_blank"
+            rel="noreferrer"
+            :aria-label="social.label"
+            class="w-8 h-8 bg-nb-white border-[2px] border-nb-white flex items-center justify-center text-nb-black transition-all hover:bg-nb-yellow"
+          >
+            <component :is="social.icon" :size="14" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </template>

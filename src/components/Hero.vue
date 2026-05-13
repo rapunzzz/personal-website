@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { Github, Linkedin, ArrowDown } from 'lucide-vue-next'
 
-const name = 'Thaariq Kurnia Spama'
-const letters = name.split('')
-
 const handleClick = (e: MouseEvent, href: string) => {
   e.preventDefault()
 
@@ -17,195 +14,180 @@ const handleClick = (e: MouseEvent, href: string) => {
 </script>
 
 <template>
-  <section id="home" class="relative min-h-screen overflow-hidden">
-    <!-- Animated gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-yellow-50 via-white to-yellow-100">
-      <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.1),transparent_50%)]"
-      ></div>
-      <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.08),transparent_50%)]"
-      ></div>
-    </div>
-
-    <!-- Floating decorative elements -->
+  <section id="home" class="relative min-h-screen bg-nb-white overflow-hidden pt-[68px]">
+    <!-- Decorative background shapes -->
     <div
-      class="absolute top-20 left-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"
+      class="absolute top-24 right-8 w-32 h-32 bg-nb-yellow border-[3px] border-nb-black rotate-12 hidden lg:block"
+      style="box-shadow: #000000 5px 5px 0px 0px"
     ></div>
     <div
-      class="absolute top-40 right-10 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"
+      class="absolute top-48 left-12 w-20 h-20 bg-nb-coral border-[3px] border-nb-black -rotate-6 hidden lg:block"
+      style="box-shadow: #000000 3px 3px 0px 0px"
     ></div>
     <div
-      class="absolute bottom-20 left-1/2 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"
+      class="absolute bottom-32 right-24 w-16 h-16 bg-nb-blue border-[3px] border-nb-black rotate-45 hidden lg:block"
+      style="box-shadow: #000000 3px 3px 0px 0px"
+    ></div>
+    <div
+      class="absolute bottom-48 left-24 w-24 h-24 bg-nb-green border-[3px] border-nb-black rotate-12 hidden lg:block"
+      style="box-shadow: #000000 5px 5px 0px 0px"
+    ></div>
+    <div
+      class="absolute top-[60%] right-[15%] w-12 h-12 bg-nb-cyan border-[3px] border-nb-black -rotate-12 hidden lg:block"
     ></div>
 
-    <div class="relative z-10 flex min-h-screen items-center justify-center px-4 py-20">
-      <div class="mx-auto w-full max-w-5xl text-center">
-        <!-- Greeting -->
-        <p
-          v-motion
-          :initial="{ opacity: 0, y: 20 }"
-          :enter="{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 600, delay: 100 },
-          }"
-          :visible-once="false"
-          class="mb-4 text-base text-gray-600 sm:text-lg sm:text-xl"
-        >
-          Hi, I'm
-        </p>
-
-        <h1 class="mb-6 text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-8xl">
-          <span
-            v-for="(letter, index) in letters"
-            :key="index"
+    <!-- Main content -->
+    <div
+      class="relative z-10 flex min-h-[calc(100vh-68px)] items-center justify-center px-4 sm:px-6 lg:px-12 py-12"
+    >
+      <div class="max-w-[1440px] w-full mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Left side: Text content -->
+          <div
             v-motion
-            :initial="{ opacity: 0, y: 50, rotateX: -90 }"
+            :initial="{ opacity: 0, x: -40 }"
+            :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 200 } }"
+          >
+            <!-- Greeting badge -->
+            <div
+              class="inline-block bg-nb-yellow border-[3px] border-nb-black px-4 py-2 mb-6"
+              style="box-shadow: #000000 3px 3px 0px 0px"
+            >
+              <span class="font-space-mono text-sm font-bold text-nb-black"> Hi, I'm </span>
+            </div>
+
+            <!-- Name -->
+            <h1
+              class="font-syne font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-tight tracking-tight text-nb-black mb-4"
+            >
+              THAARIQ
+              <br />
+              <span class="text-nb-coral">KURNIA</span>
+              <br />
+              SPAMA
+            </h1>
+
+            <!-- Role -->
+            <div
+              class="inline-block bg-nb-black px-5 py-2 mb-8"
+              style="box-shadow: #ff6b6b 5px 5px 0px 0px"
+            >
+              <p
+                class="font-space-grotesk font-bold text-lg sm:text-xl text-nb-white tracking-wide"
+              >
+                FULL-STACK DEVELOPER
+              </p>
+            </div>
+
+            <!-- Description -->
+            <p
+              class="font-space-grotesk font-medium text-lg sm:text-xl text-nb-black max-w-xl mb-10 leading-relaxed"
+            >
+              Building full-stack systems with clean backend logic and well-structured APIs,
+              designed to solve real problems with practical, scalable solutions.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap items-center gap-4 mb-8">
+              <a
+                href="#projects"
+                @click="(e: MouseEvent) => handleClick(e, '#projects')"
+                class="inline-flex items-center gap-2 bg-nb-yellow text-nb-black font-space-grotesk font-bold text-base px-6 py-3 border-[3px] border-nb-black transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+                style="box-shadow: #000000 5px 5px 0px 0px"
+              >
+                View My Work
+                <ArrowDown :size="18" />
+              </a>
+              <a
+                href="#contact"
+                @click="(e: MouseEvent) => handleClick(e, '#contact')"
+                class="inline-flex items-center gap-2 bg-nb-white text-nb-black font-space-grotesk font-bold text-base px-6 py-3 border-[3px] border-nb-black transition-all hover:bg-nb-black hover:text-nb-white"
+              >
+                Get In Touch
+              </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-3">
+              <a
+                href="https://github.com/rapunzzz"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub Profile"
+                class="w-12 h-12 border-[3px] border-nb-black flex items-center justify-center bg-nb-white text-nb-black transition-all hover:bg-nb-black hover:text-nb-white hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+                style="box-shadow: #000000 3px 3px 0px 0px"
+              >
+                <Github :size="20" aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/thaariqkurnia"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn Profile"
+                class="w-12 h-12 border-[3px] border-nb-black flex items-center justify-center bg-nb-white text-nb-black transition-all hover:bg-nb-blue hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+                style="box-shadow: #000000 3px 3px 0px 0px"
+              >
+                <Linkedin :size="20" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <!-- Right side: Mascot Character -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, x: 40, rotate: 5 }"
             :enter="{
               opacity: 1,
-              y: 0,
-              rotateX: 0,
-              transition: {
-                type: 'spring',
-                stiffness: 100,
-                damping: 10,
-                delay: 200 + index * 40,
-              },
+              x: 0,
+              rotate: 0,
+              transition: { type: 'spring', stiffness: 80, damping: 12, delay: 600 },
             }"
-            :visible-once="false"
-            :class="[
-              'inline-block',
-              letter === ' ' ? 'w-2 sm:w-4' : '',
-              index < 7 || index >= 14 ? 'text-yellow-600' : 'text-gray-800',
-            ]"
+            class="flex justify-center items-center"
           >
-            {{ letter === ' ' ? '\u00A0' : letter }}
-          </span>
-        </h1>
+            <div class="relative">
+              <!-- Mascot card container -->
+              <div
+                class="relative bg-nb-offwhite border-[3px] border-nb-black p-6 sm:p-8"
+                style="box-shadow: #000000 8px 8px 0px 0px"
+              >
+                <img
+                  src="/images/mascot-sitting.png"
+                  alt="Developer mascot character sitting with a laptop"
+                  class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-contain"
+                />
 
-        <!-- Role with gradient -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.8 }"
-          :enter="{
-            opacity: 1,
-            scale: 1,
-            transition: { duration: 600, delay: 1200 },
-          }"
-          :visible-once="false"
-          class="mb-8"
-        >
-          <p
-            class="inline-block text-xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent sm:text-2xl sm:text-3xl"
-          >
-            Full-Stack Developer
-          </p>
-        </div>
+                <!-- Floating speech bubble -->
+                <div
+                  class="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-nb-yellow border-[3px] border-nb-black px-4 py-2 rotate-3"
+                  style="box-shadow: #000000 3px 3px 0px 0px"
+                >
+                  <span
+                    class="font-space-mono text-xs sm:text-sm font-bold text-nb-black whitespace-nowrap"
+                  >
+                    &lt;/&gt; Let's build!
+                  </span>
+                </div>
 
-        <!-- Description -->
-        <p
-          v-motion
-          :initial="{ opacity: 0, y: 20 }"
-          :enter="{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 600, delay: 1400 },
-          }"
-          class="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg sm:text-xl"
-        >
-          Building full-stack systems with clean backend logic and well-structured APIs, designed to
-          solve real problems with practical, scalable solutions.
-        </p>
+                <!-- Floating code block -->
+                <div
+                  class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-nb-black border-[3px] border-nb-black px-3 py-1.5 -rotate-2"
+                  style="box-shadow: #ff6b6b 3px 3px 0px 0px"
+                >
+                  <span class="font-space-mono text-xs text-nb-green"> const dev = "rapunzz" </span>
+                </div>
+              </div>
 
-        <!-- CTA Buttons -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, y: 20 }"
-          :enter="{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 600, delay: 1600 },
-          }"
-          :visible-once="false"
-          class="mb-12 flex flex-wrap items-center justify-center gap-4"
-        >
-          <a
-            href="#projects"
-            @click="(e: MouseEvent) => handleClick(e, '#projects')"
-            class="group inline-flex items-center gap-2 rounded-full bg-yellow-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-yellow-700 hover:shadow-xl hover:scale-105 sm:px-8 sm:py-4 sm:text-base"
-          >
-            View My Work
-            <ArrowDown :size="18" class="transition-transform group-hover:translate-y-1" />
-          </a>
-          <a
-            href="#contact"
-            @click="(e: MouseEvent) => handleClick(e, '#contact')"
-            class="inline-flex items-center gap-2 rounded-full border-2 border-yellow-600 bg-white px-6 py-3 text-sm font-semibold text-yellow-600 transition-all hover:bg-yellow-50 hover:scale-105 sm:px-8 sm:py-4 sm:text-base"
-          >
-            Get In Touch
-          </a>
-        </div>
-
-        <!-- Social Links -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, y: 20 }"
-          :enter="{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 600, delay: 1800 },
-          }"
-          :visible-once="false"
-          class="flex items-center justify-center gap-4"
-        >
-          <a
-            href="https://github.com/rapunzzz"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub Profile"
-            class="group inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white text-gray-700 transition-all hover:border-yellow-600 hover:text-yellow-600 hover:scale-110 hover:shadow-lg"
-          >
-            <Github :size="22" aria-hidden="true" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/thaariqkurnia"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn Profile"
-            class="group inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-300 bg-white text-gray-700 transition-all hover:border-yellow-600 hover:text-yellow-600 hover:scale-110 hover:shadow-lg"
-          >
-            <Linkedin :size="22" aria-hidden="true" />
-          </a>
+              <!-- Background accent shapes behind mascot -->
+              <div
+                class="absolute -z-10 -top-4 -left-4 w-full h-full bg-nb-coral border-[3px] border-nb-black"
+              ></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Bottom border strip -->
+    <div class="absolute bottom-0 left-0 w-full h-[3px] bg-nb-black"></div>
   </section>
 </template>
-
-<style scoped>
-@keyframes blob {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-</style>

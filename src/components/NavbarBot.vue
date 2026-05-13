@@ -10,9 +10,11 @@ const navItems = [
 ]
 
 const activeSection = ref('home')
+const isMobileMenuOpen = ref(false)
 
 const handleClick = (e: MouseEvent, href: string) => {
   e.preventDefault()
+  isMobileMenuOpen.value = false
 
   const id = href.replace('#', '')
   const element = document.getElementById(id)
@@ -82,68 +84,78 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav class="fixed bottom-3 left-1/2 -translate-x-1/2 px-2 sm:bottom-8 sm:px-4 z-50">
-    <div
-      v-motion
-      :initial="{ y: 100, opacity: 0 }"
-      :enter="{ y: 0, opacity: 1, transition: { duration: 600, delay: 300 } }"
-      class="flex items-center justify-center gap-0.5 rounded-full bg-white/90 backdrop-blur-lg px-1.5 py-1.5 shadow-2xl border border-gray-200 sm:gap-2 sm:px-3 sm:py-2"
-    >
-      <a
-        v-for="item in navItems"
-        :key="item.name"
-        :href="item.href"
-        @click="(e) => handleClick(e, item.href)"
-        :class="[
-          'group relative flex items-center justify-center gap-1 px-2 py-1.5 rounded-full transition-all duration-300 text-xs sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm',
-          activeSection === item.href.replace('#', '')
-            ? 'text-white'
-            : 'text-gray-600 hover:text-yellow-600 hover:bg-yellow-50',
-        ]"
-      >
-        <!-- Active background -->
-        <span
-          v-if="activeSection === item.href.replace('#', '')"
-          class="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-400 shadow-lg -z-10 animate-fade-in"
-        ></span>
-
-        <!-- Hover indicator -->
-        <span
-          v-else
-          class="absolute inset-0 rounded-full bg-yellow-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-        ></span>
-
-        <!-- Text -->
-        <span class="font-semibold relative z-10 whitespace-nowrap">{{ item.name }}</span>
-
-        <!-- Active dot indicator -->
-        <span
-          v-if="activeSection === item.href.replace('#', '')"
-          class="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2"
+  <!-- Top Navigation Bar -->
+  <nav
+    id="main-nav"
+    class="fixed top-0 left-0 w-full z-50 bg-nb-white border-b-[3px] border-nb-black"
+    style="box-shadow: #000000 0px 4px 0px 0px"
+  >
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="flex items-center justify-between h-[68px]">
+        <!-- Logo -->
+        <a
+          href="#home"
+          @click="(e: MouseEvent) => handleClick(e, '#home')"
+          class="font-syne font-extrabold text-xl sm:text-2xl tracking-tight text-nb-black hover:text-nb-coral transition-colors"
         >
-          <span
-            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"
-          ></span>
-          <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-white"></span>
-        </span>
-      </a>
+          THAARIQ<span class="text-nb-coral">.</span>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center gap-1">
+          <a
+            v-for="item in navItems"
+            :key="item.name"
+            :href="item.href"
+            @click="(e: MouseEvent) => handleClick(e, item.href)"
+            :class="[
+              'font-space-grotesk font-bold text-sm px-4 py-2 border-[3px] transition-all',
+              activeSection === item.href.replace('#', '')
+                ? 'bg-nb-yellow border-nb-black text-nb-black'
+                : 'bg-transparent border-transparent text-nb-black hover:border-nb-black',
+            ]"
+          >
+            {{ item.name }}
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
+          class="md:hidden w-12 h-12 border-[3px] border-nb-black flex items-center justify-center hover:bg-nb-yellow transition-colors"
+          aria-label="Toggle menu"
+        >
+          <div class="flex flex-col gap-1.5" v-if="!isMobileMenuOpen">
+            <span class="w-5 h-[3px] bg-nb-black block"></span>
+            <span class="w-5 h-[3px] bg-nb-black block"></span>
+            <span class="w-5 h-[3px] bg-nb-black block"></span>
+          </div>
+          <span v-else class="font-syne font-extrabold text-lg">✕</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      v-if="isMobileMenuOpen"
+      class="md:hidden bg-nb-white border-t-[3px] border-nb-black"
+    >
+      <div class="flex flex-col">
+        <a
+          v-for="item in navItems"
+          :key="item.name"
+          :href="item.href"
+          @click="(e: MouseEvent) => handleClick(e, item.href)"
+          :class="[
+            'font-space-grotesk font-bold text-lg px-6 py-4 border-b-[3px] border-nb-black transition-all',
+            activeSection === item.href.replace('#', '')
+              ? 'bg-nb-yellow text-nb-black'
+              : 'bg-nb-white text-nb-black hover:bg-nb-yellow',
+          ]"
+        >
+          {{ item.name }}
+        </a>
+      </div>
     </div>
   </nav>
 </template>
-
-<style scoped>
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
-}
-</style>
