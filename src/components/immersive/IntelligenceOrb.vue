@@ -458,14 +458,16 @@ onBeforeUnmount(() => {
 }
 @media (max-width: 640px) {
   .raphael-scene {
-    min-height: 360px;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 1;
   }
   .raphael-label {
     right: 0;
     bottom: 16%;
   }
   .interaction-hint {
-    bottom: 5%;
+    display: none;
   }
 }
 </style>

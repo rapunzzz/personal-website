@@ -808,22 +808,31 @@ onBeforeUnmount(() => {
 }
 @media (max-width: 600px) {
   .archive-topbar {
+    top: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    min-height: 50px;
     grid-template-columns: 1fr auto;
   }
   .archive-topbar > div {
     display: none;
   }
   .archive-window {
-    top: 4.8rem;
+    top: 4.25rem;
     right: 0.55rem;
-    bottom: 5.1rem;
+    bottom: 4.75rem;
     width: calc(100vw - 1.1rem);
   }
   .archive-stage {
-    inset: 4rem 0 5rem;
+    inset: 4rem 0 4.75rem;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
   .archive-orb {
-    width: 115vw;
+    width: min(92vw, calc(100dvh - 10rem), 420px);
+    max-width: 100%;
+    margin-inline: auto;
   }
   .archive-ring {
     display: none;
@@ -836,12 +845,24 @@ onBeforeUnmount(() => {
   }
   .archive-dock {
     bottom: 0.5rem;
+    display: grid;
     width: calc(100vw - 1rem);
-    justify-content: center;
+    max-width: 390px;
+    min-height: 56px;
+    gap: clamp(0.1rem, 0.8vw, 0.3rem);
+    padding: 0.3rem;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
   }
   .archive-dock button,
   .archive-dock a {
-    width: min(44px, 12vw);
+    width: 100%;
+    max-width: 42px;
+    height: 42px;
+    min-width: 0;
+    justify-self: center;
+  }
+  .archive-dock i {
+    display: none;
   }
   .archive-window__body h1 {
     font-size: 2rem;

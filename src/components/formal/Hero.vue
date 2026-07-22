@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { profile } from '@/data/portfolio'
-import { FileDown, Github, Linkedin, Mail } from 'lucide-vue-next'
+import { FileDown, Github, Linkedin } from 'lucide-vue-next'
 
 const cvUrl = '/documents/thaariq-kurnia-cv.pdf'
 

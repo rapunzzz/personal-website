@@ -254,7 +254,7 @@ onBeforeUnmount(() => window.clearInterval(clockTimer))
 }
 @media (max-width: 600px) {
   .gateway {
-    padding-inline: 0.75rem;
+    padding: 0.75rem 0.75rem 1rem;
   }
   .gateway-status span:last-child,
   .gateway footer span:first-child,
@@ -265,7 +265,11 @@ onBeforeUnmount(() => window.clearInterval(clockTimer))
     justify-content: center;
   }
   .gateway-clock {
+    gap: 0.55rem;
     flex-direction: column;
+  }
+  .gateway-clock strong {
+    font-size: clamp(3.2rem, 18vw, 4.5rem);
   }
   .gateway-clock span {
     max-width: none;
@@ -273,7 +277,16 @@ onBeforeUnmount(() => window.clearInterval(clockTimer))
   }
   .gateway-enter {
     min-width: 0;
-    width: min(100%, 330px);
+    width: min(82vw, 280px);
+    min-height: 50px;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0.65rem 0.9rem;
+    box-shadow:
+      4px 4px 0 #5b2b07,
+      0 0 28px rgba(226, 133, 18, 0.18);
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
   }
 }
 @media (prefers-reduced-motion: reduce) {
