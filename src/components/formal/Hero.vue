@@ -29,9 +29,6 @@ const facts = [
             <a :href="cvUrl" class="quiet-button" target="_blank" rel="noreferrer">
               <FileDown :size="17" aria-hidden="true" /> Download CV
             </a>
-            <a :href="`mailto:${profile.email}`" class="formal-hero__contact">
-              <Mail :size="17" aria-hidden="true" /> Contact me
-            </a>
           </div>
 
           <div class="formal-hero__socials">
