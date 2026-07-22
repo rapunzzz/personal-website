@@ -4,6 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        'l-canvas': '#FBF7ED',
+        'l-surface': '#FFFDF8',
+        'l-ink': '#251D16',
+        'l-muted': '#746655',
+        'l-blue': '#D58A19',
+        'l-cyan': '#77C8C4',
+        'l-gold': '#F2B23D',
+        'l-lavender': '#E8C98D',
         'nb-black': '#000000',
         'nb-white': '#FFFFFF',
         'nb-coral': '#FF6B6B',
@@ -24,12 +32,16 @@ export default {
         'nb-error': '#FF4444',
       },
       fontFamily: {
+        'display': ['Space Grotesk', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        'body': ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         'syne': ['Syne', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         'space-grotesk': ['Space Grotesk', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         'space-mono': ['Space Mono', 'Courier New', 'monospace'],
         'inter': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       boxShadow: {
+        'spatial': '0 24px 80px rgba(55, 113, 170, 0.14)',
+        'glow': '0 0 50px rgba(112, 231, 255, 0.42)',
         'nb-sm': '#000000 3px 3px 0px 0px',
         'nb-md': '#000000 5px 5px 0px 0px',
         'nb-lg': '#000000 8px 8px 0px 0px',

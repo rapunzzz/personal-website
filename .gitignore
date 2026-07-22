@@ -28,6 +28,11 @@ coverage
 
 .eslintcache
 
+# Local AI agent tooling and downloaded skills
+.opencode/
+.claude/
+.cursor/
+
 # Cypress
 /cypress/videos/
 /cypress/screenshots/

@@ -4,10 +4,39 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/rapunzz-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Thaariq Kurnia Spama — Full-Stack Developer portfolio. Building scalable, reliable software systems with clean backend logic and well-structured APIs." />
-    <meta name="keywords" content="Thaariq, developer, full-stack, portfolio, software engineer, web developer" />
+    <meta name="theme-color" content="#FBF7ED" />
+    <meta
+      name="description"
+      content="Thaariq Kurnia Spama is a full-stack developer building thoughtful digital systems from interface to infrastructure."
+    />
+    <meta
+      name="keywords"
+      content="Thaariq, developer, full-stack, portfolio, software engineer, web developer"
+    />
     <meta name="author" content="Thaariq Kurnia Spama" />
-    <title>Thaariq — Full-Stack Developer</title>
+    <title>Thaariq Kurnia Spama | Full-Stack Developer</title>
+    <script>
+      document.documentElement.dataset.mode =
+        location.pathname === '/' || location.pathname.startsWith('/world') ? 'immersive' : 'formal'
+    </script>
+    <style>
+      html,
+      body,
+      #app {
+        min-height: 100%;
+        margin: 0;
+      }
+      html[data-mode='immersive'],
+      html[data-mode='immersive'] body,
+      html[data-mode='immersive'] #app {
+        background: #120c08;
+      }
+      html[data-mode='formal'],
+      html[data-mode='formal'] body,
+      html[data-mode='formal'] #app {
+        background: #fbf7ed;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>

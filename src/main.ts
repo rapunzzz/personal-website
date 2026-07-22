@@ -1,16 +1,25 @@
-import './assets/main.css'
+import './styles/main.css'
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import { MotionPlugin } from '@vueuse/motion'
 
 import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
 
-app.use(createPinia())
 app.use(router)
-app.use(MotionPlugin)
 
-app.mount('#app')
+const setDocumentMode = (path: string) => {
+  const immersive = path === '/' || path.startsWith('/world')
+  document.documentElement.dataset.mode = immersive ? 'immersive' : 'formal'
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute('content', immersive ? '#120C08' : '#FBF7ED')
+}
+
+router.afterEach((to) => setDocumentMode(to.path))
+
+void router.isReady().then(() => {
+  setDocumentMode(router.currentRoute.value.path)
+  app.mount('#app')
+})

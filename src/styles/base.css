@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --canvas: #fbf7ed;
+  --surface: #fffdf8;
+  --surface-glass: rgba(255, 253, 247, 0.72);
+  --ink: #251d16;
+  --ink-muted: #746655;
+  --blue: #d58a19;
+  --cyan: #77c8c4;
+  --gold: #f2b23d;
+  --lavender: #e8c98d;
+  --line: rgba(151, 105, 34, 0.2);
+  --shadow: 0 24px 80px rgba(113, 75, 21, 0.13);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family:
+    'DM Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 8%, rgba(242, 178, 61, 0.22), transparent 30rem),
+    radial-gradient(circle at 8% 38%, rgba(255, 221, 145, 0.2), transparent 26rem),
+    linear-gradient(180deg, #fffefb 0%, var(--canvas) 40%, #f8f0df 100%);
+  content: '';
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  color: var(--ink);
+  background: #ffd36d;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5eddf;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #f5eddf;
+  border-radius: 999px;
+  background: #ad8a54;
+}
+
+.page-shell {
+  width: min(100% - 2rem, 1280px);
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: clamp(5rem, 9vw, 9rem);
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--surface-glass);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 #ffffff;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: #9b6211;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+  content: '';
+}
+
+.section-title {
+  max-width: 850px;
+  margin-top: 1.25rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.luminous-button,
+.quiet-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 999px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.luminous-button {
+  color: #ffffff;
+  color: #2c1d0b;
+  background: linear-gradient(135deg, #ffc858, #ee921e);
+  box-shadow:
+    0 12px 30px rgba(207, 126, 18, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.luminous-button:hover {
+  box-shadow:
+    0 16px 38px rgba(207, 126, 18, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.quiet-button {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.quiet-button:hover {
+  border-color: rgba(213, 138, 25, 0.5);
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.grid-noise {
+  background-image:
+    linear-gradient(rgba(151, 105, 34, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(151, 105, 34, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 75%, transparent);
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 1.25rem, 1280px);
+  }
+
+  .section-space {
+    padding-block: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
