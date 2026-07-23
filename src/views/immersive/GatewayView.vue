@@ -256,6 +256,19 @@ onBeforeUnmount(() => window.clearInterval(clockTimer))
   .gateway {
     padding: 0.75rem 0.75rem 1rem;
   }
+  .gateway-lines {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: calc(100vw - 1rem);
+    height: min(calc(100dvh - 5.5rem), 680px);
+    border-color: rgba(241, 168, 46, 0.2);
+    border-radius: 1.6rem;
+    box-shadow:
+      0 0 70px rgba(220, 116, 8, 0.12),
+      inset 0 0 70px rgba(220, 116, 8, 0.07);
+    transform: translate(-50%, -50%);
+  }
   .gateway-status span:last-child,
   .gateway footer span:first-child,
   .gateway footer span:last-child {
@@ -263,6 +276,28 @@ onBeforeUnmount(() => window.clearInterval(clockTimer))
   }
   .gateway footer {
     justify-content: center;
+  }
+  .gateway-content {
+    position: relative;
+    width: min(100%, 390px);
+    max-height: min(680px, calc(100dvh - 6.5rem));
+    margin: 0.75rem auto;
+    border: 1px solid rgba(246, 185, 77, 0.24);
+    border-radius: 1.35rem;
+    padding: clamp(0.8rem, 2.2dvh, 1.25rem) 1rem;
+    background:
+      linear-gradient(90deg, rgba(240, 166, 45, 0.48) 18px, transparent 18px) top left / 52px 1px
+        no-repeat,
+      linear-gradient(rgba(240, 166, 45, 0.48) 18px, transparent 18px) top left / 1px 52px no-repeat,
+      linear-gradient(270deg, rgba(240, 166, 45, 0.48) 18px, transparent 18px) top right / 52px 1px
+        no-repeat,
+      linear-gradient(rgba(240, 166, 45, 0.48) 18px, transparent 18px) top right / 1px 52px
+        no-repeat,
+      rgba(22, 14, 8, 0.76);
+    box-shadow:
+      inset 0 0 42px rgba(210, 111, 8, 0.05),
+      0 18px 60px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(8px);
   }
   .gateway-clock {
     gap: 0.55rem;
@@ -274,6 +309,20 @@ onBeforeUnmount(() => window.clearInterval(clockTimer))
   .gateway-clock span {
     max-width: none;
     text-align: center;
+  }
+  .gateway-core {
+    width: 88px;
+    height: 88px;
+    margin-block: clamp(0.8rem, 2.4dvh, 1.2rem);
+  }
+  .gateway-core__spikes {
+    inset: -21px;
+  }
+  .gateway-core__orb {
+    inset: 20px;
+  }
+  .gateway-content h1 {
+    font-size: clamp(2.7rem, 14vw, 3.7rem);
   }
   .gateway-enter {
     min-width: 0;
@@ -287,6 +336,33 @@ onBeforeUnmount(() => window.clearInterval(clockTimer))
       0 0 28px rgba(226, 133, 18, 0.18);
     font-size: 0.62rem;
     letter-spacing: 0.07em;
+  }
+}
+@media (max-width: 600px) and (max-height: 680px) {
+  .gateway-content {
+    margin-block: 0.45rem;
+    padding-block: 0.65rem;
+  }
+  .gateway-clock strong {
+    font-size: clamp(2.8rem, 15vw, 3.6rem);
+  }
+  .gateway-core {
+    width: 72px;
+    height: 72px;
+    margin-block: 0.55rem;
+  }
+  .gateway-core__spikes {
+    inset: -16px;
+  }
+  .gateway-core__orb {
+    inset: 17px;
+  }
+  .gateway-content h1 {
+    font-size: 2.55rem;
+  }
+  .gateway-enter {
+    min-height: 46px;
+    margin-top: 0.8rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

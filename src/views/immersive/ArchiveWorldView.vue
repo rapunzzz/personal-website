@@ -68,6 +68,12 @@ onBeforeUnmount(() => {
     </header>
 
     <section class="archive-stage" aria-label="Raphael memory archive">
+      <div class="archive-mobile-heading" aria-hidden="true">
+        <span><i></i> Core entity online</span>
+        <strong>RAPHAEL</strong>
+        <small>Archive intelligence / 01</small>
+      </div>
+
       <div class="archive-orb"><IntelligenceOrb @activate="touchCore" /></div>
       <div class="archive-ring archive-ring--one" aria-hidden="true"></div>
       <div class="archive-ring archive-ring--two" aria-hidden="true"></div>
@@ -83,6 +89,11 @@ onBeforeUnmount(() => {
         >
           <span><component :is="node.icon" :size="20" /></span><strong>{{ node.label }}</strong>
         </button>
+      </div>
+
+      <div class="archive-caption">
+        <small>Memory interface ready</small>
+        <strong>Use the dock to explore</strong>
       </div>
     </section>
 
@@ -340,6 +351,9 @@ onBeforeUnmount(() => {
 .archive-orb :deep(.raphael-scene) {
   min-height: 0;
 }
+.archive-mobile-heading {
+  display: none;
+}
 .archive-ring {
   position: absolute;
   border: 1px solid rgba(234, 166, 51, 0.28);
@@ -441,7 +455,7 @@ onBeforeUnmount(() => {
   position: absolute;
   bottom: 7%;
   left: 50%;
-  display: flex;
+  display: none;
   align-items: center;
   flex-direction: column;
   transform: translateX(-50%);
@@ -807,6 +821,9 @@ onBeforeUnmount(() => {
   }
 }
 @media (max-width: 600px) {
+  .archive-circuit {
+    display: none;
+  }
   .archive-topbar {
     top: 0.5rem;
     right: 0.5rem;
@@ -824,15 +841,96 @@ onBeforeUnmount(() => {
     width: calc(100vw - 1.1rem);
   }
   .archive-stage {
-    inset: 4rem 0 4.75rem;
-    width: 100%;
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: min(calc(100vw - 1rem), calc(100dvh - 10rem), 430px);
+    height: min(calc(100vw - 1rem), calc(100dvh - 10rem), 430px);
     min-width: 0;
     overflow: hidden;
+    border: 1px solid rgba(239, 166, 48, 0.25);
+    border-radius: 1.35rem;
+    background:
+      linear-gradient(90deg, rgba(241, 174, 60, 0.5) 20px, transparent 20px) top left / 58px 1px
+        no-repeat,
+      linear-gradient(rgba(241, 174, 60, 0.5) 20px, transparent 20px) top left / 1px 58px no-repeat,
+      linear-gradient(270deg, rgba(241, 174, 60, 0.5) 20px, transparent 20px) bottom right / 58px
+        1px no-repeat,
+      linear-gradient(0deg, rgba(241, 174, 60, 0.5) 20px, transparent 20px) bottom right / 1px 58px
+        no-repeat,
+      radial-gradient(circle, rgba(119, 61, 9, 0.14), rgba(17, 11, 7, 0.54) 68%);
+    box-shadow:
+      inset 0 0 55px rgba(209, 104, 7, 0.07),
+      0 24px 70px rgba(0, 0, 0, 0.28);
+    transform: translate(-50%, -50%);
   }
   .archive-orb {
-    width: min(92vw, calc(100dvh - 10rem), 420px);
+    width: 74%;
     max-width: 100%;
     margin-inline: auto;
+  }
+  .archive-mobile-heading {
+    position: absolute;
+    z-index: 2;
+    top: 0.9rem;
+    right: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    color: #9b8157;
+    text-align: center;
+    flex-direction: column;
+  }
+  .archive-mobile-heading span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.43rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .archive-mobile-heading span i {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: #ffc24d;
+    box-shadow: 0 0 9px #d86e08;
+  }
+  .archive-mobile-heading strong {
+    margin-top: 0.25rem;
+    color: #f0ca7e;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1rem, 5vw, 1.25rem);
+    letter-spacing: 0.16em;
+  }
+  .archive-mobile-heading small {
+    margin-top: 0.1rem;
+    color: #725b3a;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.4rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .archive-caption {
+    z-index: 2;
+    bottom: 0.9rem;
+    display: flex;
+    width: calc(100% - 2rem);
+    border-top: 1px solid rgba(239, 174, 66, 0.15);
+    padding-top: 0.65rem;
+    text-align: center;
+  }
+  .archive-caption small {
+    font-size: 0.42rem;
+    letter-spacing: 0.1em;
+  }
+  .archive-caption strong {
+    margin-top: 0.16rem;
+    color: #e1bd76;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.04em;
   }
   .archive-ring {
     display: none;

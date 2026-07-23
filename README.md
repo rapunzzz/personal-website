@@ -125,6 +125,16 @@ Preview the production build:
 bun run preview
 ```
 
+## Deployment
+
+This project uses Vue Router history mode, so the host must rewrite unknown routes to `index.html`. Netlify uses `public/_redirects`, which Vite copies into the production output:
+
+```text
+/* /index.html 200
+```
+
+Keep this rule so direct visits and hard refreshes on `/formal`, `/world`, and legacy redirect paths resolve through Vue Router instead of returning a hosting 404.
+
 ## Quality Checks
 
 ```sh
