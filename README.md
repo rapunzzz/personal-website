@@ -57,7 +57,6 @@ Portfolio content is centralized in `src/data/portfolio.ts`. Update that file in
 |-- public/
 |   |-- documents/
 |   |   `-- thaariq-kurnia-cv.pdf
-|   |-- icons/                        # Technology icons referenced by portfolio data
 |   |-- images/                       # Project imagery
 |   `-- rapunzz-logo.png              # Browser icon and brand asset
 |-- src/

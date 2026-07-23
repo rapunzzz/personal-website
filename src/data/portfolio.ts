@@ -23,23 +23,6 @@ export const signals = [
   { value: 'Say hello', label: 'Channel is open' },
 ]
 
-export const skills = [
-  { name: 'React', icon: '/icons/react.png' },
-  { name: 'Next.js', icon: '/icons/nextjs.png' },
-  { name: 'Vue.js', icon: '/icons/vuejs.png' },
-  { name: 'HTML', icon: '/icons/html.png' },
-  { name: 'Tailwind CSS', icon: '/icons/tailwind.png' },
-  { name: 'Express.js', icon: '/icons/express.png' },
-  { name: 'Django', icon: '/icons/django.png' },
-  { name: '.NET', icon: '/icons/net.png' },
-  { name: 'Go Fiber', icon: '/icons/fibergo.png' },
-  { name: 'PostgreSQL', icon: '/icons/postgresql.png' },
-  { name: 'SQL Server', icon: '/icons/sqlserver.png' },
-  { name: 'SQLite', icon: '/icons/sqlite.png' },
-  { name: 'Flutter', icon: '/icons/flutter.png' },
-  { name: 'CSS', icon: '/icons/css.png' },
-]
-
 export const skillGroups = [
   {
     title: 'Interface systems',
