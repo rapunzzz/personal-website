@@ -71,6 +71,7 @@ Portfolio content is centralized in `src/data/portfolio.ts`. Update that file in
 |   |   |   |-- Navbar.vue
 |   |   |   `-- Project.vue
 |   |   `-- immersive/
+|   |       |-- ArchiveCursor.vue    # Desktop glass cursor for immersive routes
 |   |       `-- IntelligenceOrb.vue  # Three.js scene used only by Archive World
 |   |-- data/
 |   |   `-- portfolio.ts              # Single source of truth for portfolio content

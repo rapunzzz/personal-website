@@ -374,12 +374,8 @@ onBeforeUnmount(() => {
 }
 .memory-orbit {
   position: absolute;
-  width: min(76vw, calc(100vh - 7rem), 880px);
-  border: 1px solid rgba(236, 168, 54, 0.2);
-  border-radius: 50%;
-  box-shadow: 0 0 32px rgba(220, 131, 14, 0.06);
-  aspect-ratio: 1;
-  animation: memory-orbit-spin 54s linear infinite;
+  width: min(88vw, 1180px);
+  height: min(68vh, 680px);
   pointer-events: none;
 }
 .memory-node {
@@ -392,7 +388,6 @@ onBeforeUnmount(() => {
   background: transparent;
   flex-direction: column;
   transform: translate(-50%, -50%);
-  animation: memory-node-counter-spin 54s linear infinite;
   pointer-events: auto;
   will-change: transform;
 }
@@ -428,28 +423,34 @@ onBeforeUnmount(() => {
   transform: scale(1.08);
 }
 .memory-node--1 {
-  top: 0;
-  left: 50%;
+  top: 20%;
+  left: 8%;
+  animation: memory-node-float-x 4.8s ease-in-out infinite alternate;
 }
 .memory-node--2 {
-  top: 25%;
-  left: 93.3%;
+  top: 50%;
+  left: 3%;
+  animation: memory-node-float-y 5.4s ease-in-out -1.2s infinite alternate;
 }
 .memory-node--3 {
-  left: 93.3%;
-  bottom: 25%;
+  top: 80%;
+  left: 8%;
+  animation: memory-node-float-x 5.8s ease-in-out -2.4s infinite alternate-reverse;
 }
 .memory-node--4 {
-  bottom: 0;
-  left: 50%;
+  top: 20%;
+  left: 92%;
+  animation: memory-node-float-y 5.1s ease-in-out -0.8s infinite alternate-reverse;
 }
 .memory-node--5 {
-  bottom: 25%;
-  left: 6.7%;
+  top: 50%;
+  left: 97%;
+  animation: memory-node-float-x 5.6s ease-in-out -1.9s infinite alternate;
 }
 .memory-node--6 {
-  top: 25%;
-  left: 6.7%;
+  top: 80%;
+  left: 92%;
+  animation: memory-node-float-y 4.9s ease-in-out -3.1s infinite alternate;
 }
 .archive-caption {
   position: absolute;
@@ -781,17 +782,20 @@ onBeforeUnmount(() => {
   opacity: 0;
   transform: translateX(35px);
 }
-@keyframes memory-orbit-spin {
+@keyframes memory-node-float-x {
+  from {
+    transform: translate(-50%, -50%) translateX(-7px);
+  }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) translateX(7px);
   }
 }
-@keyframes memory-node-counter-spin {
+@keyframes memory-node-float-y {
   from {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) translateY(-7px);
   }
   to {
-    transform: translate(-50%, -50%) rotate(-360deg);
+    transform: translate(-50%, -50%) translateY(7px);
   }
 }
 @media (max-width: 900px) {
@@ -808,7 +812,8 @@ onBeforeUnmount(() => {
     display: none;
   }
   .memory-orbit {
-    width: min(88vw, calc(100vh - 6rem), 690px);
+    width: 92vw;
+    height: min(64vh, 590px);
   }
   .memory-node strong {
     display: none;

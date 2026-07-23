@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
 import AssistantPanel from '@/components/formal/AssistantPanel.vue'
 import Navbar from '@/components/formal/Navbar.vue'
+import ArchiveCursor from '@/components/immersive/ArchiveCursor.vue'
 
 const route = useRoute()
 const isImmersive = computed(() => route.meta.immersive === true)
@@ -22,6 +23,7 @@ const portalActive = ref(false)
     </Transition>
   </RouterView>
   <AssistantPanel v-if="!isImmersive && !portalActive" />
+  <ArchiveCursor v-if="isImmersive && !portalActive" />
   <div
     class="portal-overlay"
     :class="{ 'portal-overlay--active': portalActive }"
