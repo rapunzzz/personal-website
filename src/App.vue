@@ -8,21 +8,32 @@ import ArchiveCursor from '@/components/immersive/ArchiveCursor.vue'
 const route = useRoute()
 const isImmersive = computed(() => route.meta.immersive === true)
 const portalActive = ref(false)
+const showFormalShell = ref(!isImmersive.value)
+
+const onBeforeLeave = () => {
+  portalActive.value = true
+  if (isImmersive.value) showFormalShell.value = false
+}
+
+const onBeforeEnter = () => {
+  showFormalShell.value = !isImmersive.value
+}
 </script>
 
 <template>
-  <Navbar v-if="!isImmersive && !portalActive" />
+  <Navbar v-if="showFormalShell" />
   <RouterView v-slot="{ Component, route: currentRoute }">
     <Transition
       name="portal"
       mode="out-in"
-      @before-leave="portalActive = true"
+      @before-leave="onBeforeLeave"
+      @before-enter="onBeforeEnter"
       @after-enter="portalActive = false"
     >
       <component :is="Component" :key="currentRoute.path" />
     </Transition>
   </RouterView>
-  <AssistantPanel v-if="!isImmersive && !portalActive" />
+  <AssistantPanel v-if="showFormalShell" />
   <ArchiveCursor v-if="isImmersive && !portalActive" />
   <div
     class="portal-overlay"

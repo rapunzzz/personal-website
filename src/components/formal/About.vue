@@ -240,24 +240,6 @@ blockquote {
   padding-block: 2.6rem;
   transform: rotate(-2.2deg);
 }
-.orbital-ribbon::before,
-.orbital-ribbon::after {
-  position: absolute;
-  right: -2%;
-  left: -2%;
-  height: 1px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(213, 138, 25, 0.7), transparent);
-  content: '';
-}
-.orbital-ribbon::before {
-  top: 50%;
-  box-shadow: 0 0 16px rgba(213, 138, 25, 0.45);
-}
-.orbital-ribbon::after {
-  top: calc(50% + 7px);
-  opacity: 0.35;
-}
 .orbital-track {
   display: flex;
   width: max-content;
