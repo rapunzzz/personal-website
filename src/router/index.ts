@@ -33,6 +33,7 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition
     if (to.hash) return { el: to.hash, behavior: 'smooth' }
+    if (from.name === 'formal' && to.meta.immersive === true) return false
     return { top: 0 }
   },
 })
